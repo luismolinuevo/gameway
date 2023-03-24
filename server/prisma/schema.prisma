@@ -27,7 +27,7 @@ model Post {
   body String @db.VarChar(255)
   casual Boolean @default(false)
   comp Boolean @default(false)
-  dontcare Boolean @default(false)
+  dontcare Boolean @default(true)
   userId Int
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   comment Comment[]
