@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
-// import recipeRouter from "./routes/recipes.js"
+import postRouter from "./routes/post.js"
 
 export default function createServer() {
     const app = express();
@@ -29,7 +29,7 @@ export default function createServer() {
     
     app.use("/auth", authRouter);
 
-    // app.use("/recipe", recipeRouter)
+    app.use("/post", postRouter)
 
     return app;
 }
