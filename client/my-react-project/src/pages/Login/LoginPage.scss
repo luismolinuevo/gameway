@@ -1,0 +1,106 @@
+body{
+    margin:0;
+}
+.login-page {
+    height: 100vh;
+    background-color: #4A4A4A;
+    display: flex;
+    padding-left: 110vh;
+    align-items: center; 
+  }
+  .logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 0 0 20%;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      max-width: 150%;
+      max-height: 100%;
+    }
+  }
+  .login-container {
+    margin: 0 0 0 0;
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 35px;
+    height: 50vh;
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    label.title{
+        font-size:5vh;
+        margin-bottom: 6vh;
+    }
+    label{
+        color:#F5BF00;
+    }
+    &.is-animating {
+      button.animated-button {
+        &:after {
+          width: 200%;
+          height: 200%;
+          transition: all 0.4s ease-in-out;
+        }
+      }
+    }
+  }
+  
+  input {
+    display: block;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    background-color: #807E7E;
+  }
+  button.forgot{
+    background-color: #ffffff00;
+    border-style: none;
+    color:#F5BF00;
+  }
+  button.animated-button {
+    margin-left: 10px;
+    background-color: #F5BF00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+  
+    &:hover {
+      background-color: #ffc800;
+    }
+  
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+  
+    &:active:after {
+      width: 200%;
+      height: 200%;
+      transition: all 0.4s ease-in-out;
+    }
+  }
