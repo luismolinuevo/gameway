@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'hermes';
+  src: url("../../fonts/hermes.otf") format("truetype");
+}
+
+.home-container { 
+
+    background-image: url("../../images/background.gif"); ;
+    background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+    &:before {
+      background-color: rgba(230, 230, 247, 0);
+      opacity: 0.4;
+      background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, rgba(230, 230, 247, 0) 5px ), repeating-linear-gradient( #f1ff0055, #f1ff00 );
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.718); /* Change the color and opacity to your preference */
+      z-index: 1;
+    }
+    .home-box {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90vh;
+      background-color: #111111;
+      border-radius: 15%;
+      box-shadow: 12px 12px 2px 1px rgba(255, 242, 0, 0.2);
+      z-index:2;
+      button {
+        background-color: #f6b93b;
+        color: white;
+        border: none;
+        border-radius: 2vh;
+        padding: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        width: 10vh;
+          
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .homepageImg-container {
+      display: flex;
+      justify-content: center;
+      width: 90vh;
+      height: 50%;
+      overflow: hidden;
+      position: relative;
+      border-radius: 16% 16% 0 0;
+    }
+    
+    .homepageImg {
+      position: relative;
+      object-position: top;
+      border-radius: 15% 15% 0 0;
+      overflow: hidden;
+      width: 100vh;
+      height: 60vh;
+      z-index: 0;
+    
+    }
+    .homepageImg-container:before {
+      
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vh;
+      height: 60vh;
+      background-color: rgba(113, 113, 113, 0.803);
+      z-index: 1;
+    }
+
+    .logo-container {
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    
+    .logo {
+      max-width: 60vh; 
+      max-height: 100vh;
+      height: auto;
+      filter:contrast(120%);
+    
+    }
+    
+    .home-buttons-container {
+      margin-top: 10vh;
+      margin-bottom: 5vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      button{
+        font-family: "hermes";
+        font-size: 3.5vh;
+        height: 10vh;
+        width: 20vh;
+        margin-left: 5vh;
+        margin-right: 5vh;
+        box-shadow: 0px 10px #756b022c;
+      }
+    }
+
+  }
