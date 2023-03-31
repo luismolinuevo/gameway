@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'hermes';
+  src: url("../../fonts/hermes.otf") format("truetype");
+}
 body{
   margin: 0;
 }
@@ -28,24 +32,19 @@ body{
 }
 
 .logo-container {
-  position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
+   
+   width: 100%;
+   
   img {
-    max-height: 180px;
-    max-width: 180px;
+    max-height: 280px;
+    max-width: 280px;
   }
 }
 
 .register-container {
+  border-style: solid;
   z-index: 2;
-  width: 400px;
+  width: 500px;
   height: auto;
   background-color: #111111;
   padding: 20px;
@@ -53,27 +52,35 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
   position: relative;
   border-radius: 5%;
-  margin: 0 auto;
+  margin-top: 5vh;
   .register-content {
     width: 100%;
     
     h1 {
       color: #f6b93b;
       text-align: center;
+      font-family: 'hermes';
+      font-size: 10vh;
     }
     
     form {
       display: flex;
       flex-direction: column;
-      
+      margin-left:3vh;
+      margin-bottom: 3vh;
       label {
+        font-family: 'hermes';
         display: block;
         margin-bottom: 10px;
         color:#F5BF00;
         input {
+        margin-top: 2vh;
+        background-color: grey;
+        border-radius: 15vh;
+        border-style: none;
+        height: 3vh;
          margin-bottom: 20px;
           width: 90%;
           padding: 5px;
@@ -81,16 +88,19 @@ body{
       }
       
       button {
+        
+        font-family: "hermes";
+        font-size: 2vh;
         margin: 0 auto;
         background-color: #f6b93b;
-        color: white;
+        color: black;
         border: none;
         border-radius: 2vh;
         padding: 10px;
         margin-top: 20px;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
-        width: 10vh;
+        width: 12vh;
 
         &:hover {
           transform: scale(1.1);
