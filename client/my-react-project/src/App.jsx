@@ -1,16 +1,26 @@
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Homepage from './pages/Homepage/Homepage'
 import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 
 function App() {
 
 
   return (
-    <div className="App">
-     <Register/>
-    </div>
+    <Router>
+
+      <div className="App">
+       
+        <Routes>
+        <Route exact path="/" element={<Homepage/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
+        </Routes>
+      
+      </div>
+    </Router>
   )
 }
 

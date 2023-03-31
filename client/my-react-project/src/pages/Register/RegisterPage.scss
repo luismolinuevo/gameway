@@ -1,24 +1,50 @@
+body{
+  margin: 0;
+}
 .register-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #4a4a4a;
+  background-image: url("../../images/background.gif"); ;
+    background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &:before {
+    background-color: rgba(230, 230, 247, 0);
+    opacity: 0.4;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, rgba(230, 230, 247, 0) 5px ), repeating-linear-gradient( #f1ff0055, #f1ff00 );
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.718); /* Change the color and opacity to your preference */
+    z-index: 1;
+  }
 }
 
 .logo-container {
   position: absolute;
-  top: 50px;
-  left: 50px;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   
   img {
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 180px;
+    max-width: 180px;
   }
 }
 
 .register-container {
+  z-index: 2;
   width: 400px;
   height: auto;
   background-color: #111111;
@@ -29,12 +55,13 @@
   align-items: center;
   margin-top: 50px;
   position: relative;
-  
+  border-radius: 5%;
+  margin: 0 auto;
   .register-content {
     width: 100%;
     
     h1 {
-      color: white;
+      color: #f6b93b;
       text-align: center;
     }
     
@@ -45,23 +72,26 @@
       label {
         display: block;
         margin-bottom: 10px;
-        color: white;
-        
+        color:#F5BF00;
         input {
-          width: 100%;
+         margin-bottom: 20px;
+          width: 90%;
           padding: 5px;
         }
       }
       
       button {
+        margin: 0 auto;
         background-color: #f6b93b;
         color: white;
         border: none;
+        border-radius: 2vh;
         padding: 10px;
         margin-top: 20px;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
-        
+        width: 10vh;
+
         &:hover {
           transform: scale(1.1);
         }
