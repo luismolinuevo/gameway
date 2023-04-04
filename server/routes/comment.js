@@ -32,6 +32,20 @@ export default function createAuthRouter(passport) {
 
         res.status(201).json({
             success: true,
+        });
+    });
+
+    router.delete("/:postId", async (req, res) => {
+        const postId = req.params.postId;
+
+        const deleteComment = await prisma.comment.delete({
+            where: {
+                postId: Number(postId)
+            }
+        });
+
+        res.status(200).json({
+            success: true
         })
     })
 
