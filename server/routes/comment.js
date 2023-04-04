@@ -60,6 +60,11 @@ export default function createAuthRouter(passport) {
             where: {
                 id: Number(commentId)
             }
+        });
+
+        res.status(200).json({
+            success: true,
+            editComment
         })
     })
 
