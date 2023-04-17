@@ -4,7 +4,6 @@ import "./Homepage.scss";
 import homepageImg from "../../images/homepageImg.jpg"
 import logo from "../../images/logo.png"
 
-
 const HomePage = () => {
  
     return (
