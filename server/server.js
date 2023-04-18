@@ -5,6 +5,7 @@ import passport from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
 // import recipeRouter from "./routes/recipes.js"
+import commentRouter from "./routes/comment.js"
 
 export default function createServer() {
     const app = express();
@@ -28,6 +29,7 @@ export default function createServer() {
     const authRouter = createAuthRouter(passport);
     
     app.use("/auth", authRouter);
+    app.use("/comment", commentRouter)
 
     // app.use("/recipe", recipeRouter)
 
