@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    overflow-y: scroll;
+    scrollbar-color: #f6b93b #111111;
+    gap: 2rem; /* Set the gap between the edge of the screen and the scrollbar */
+  }
+  
+  body::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: #111111; /* Set the background color of the scrollbar track */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #f6b93b; /* Set the background color of the scrollbar thumb */
+    border-radius: 10px; /* Set the border radius of the scrollbar thumb */
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #f6c289; /* Set the background color of the scrollbar thumb on hover */
+  }
+  

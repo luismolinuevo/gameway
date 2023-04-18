@@ -4,7 +4,6 @@ import "./Homepage.scss";
 import homepageImg from "../../images/homepageImg.jpg"
 import logo from "../../images/logo.png"
 
-
 const HomePage = () => {
  
     return (
@@ -22,6 +21,9 @@ const HomePage = () => {
             </Link>
             <Link to="/register" >
               <button>Register</button>
+            </Link>
+            <Link to ="/userHome">
+              <button>test</button>
             </Link>
             </div>
           </div>
