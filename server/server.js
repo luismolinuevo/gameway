@@ -5,6 +5,8 @@ import passport from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
 import createPostRouter from "./routes/post.js"
+import createCommentRouter from "./routes/comment.js"
+
 
 export default function createServer() {
     const app = express();
@@ -29,9 +31,12 @@ export default function createServer() {
     
     app.use("/auth", authRouter);
 
+    const commentRouter = createCommentRouter(passport);
+    app.use("/comment", commentRouter);
+
     const postRouter = createPostRouter(passport);
 
-    app.use("/post", postRouter)
+    app.use("/post", postRouter);
 
     return app;
 }

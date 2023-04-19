@@ -1,0 +1,39 @@
+$body-bg: #4A4A4A;
+$header-bg: #111111;
+@font-face {
+  font-family: 'hermes';
+  src: url("../../fonts/hermes.otf") format("truetype");
+}
+body {
+  background-color: $body-bg;
+  margin: 0;
+  padding: 0;
+}
+.user{
+  .games {
+    
+    .game-container{
+      padding: 5vh 10vh 5vh 10vh;
+      box-shadow: 0px 5px 20px 1px;
+      border-radius: 2vh;
+      display:flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      width: 50vh;
+      background-color: #111111;
+    img {
+      border-style: solid;
+      border-color: #eeff00;
+      height: 30%;
+      width: 30%;
+      object-fit: cover;
+      border-radius: 1vh;
+    }
+    h1{
+      color:yellow;
+      margin: 0 auto;
+      margin-top: 8vh;
+    }
+    }
+}
+}

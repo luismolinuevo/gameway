@@ -22,15 +22,15 @@ function Register() {
           <h1>Register</h1>
           <form>
             <label>
-              Email:
+              Email
               <input type="text" name="email" />
             </label>
             <label>
-              Username:
+              Username
               <input type="text" name="username" />
             </label>
             <label>
-              Password:
+              Password
               <input type="password" name="password" />
             </label>
             <button type="button" onClick={handleClick}>
