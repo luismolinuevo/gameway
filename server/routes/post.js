@@ -17,7 +17,7 @@ export default function createPostRouter(passport) {
       }
     });
 
-    res.send(201).json({
+    res.status(201).json({
       success: true
     });
   });

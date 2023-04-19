@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
-import postRouter from "./routes/post.js"
+import createPostRouter from "./routes/post.js"
 
 export default function createServer() {
     const app = express();
@@ -28,6 +28,8 @@ export default function createServer() {
     const authRouter = createAuthRouter(passport);
     
     app.use("/auth", authRouter);
+
+    const postRouter = createPostRouter(passport);
 
     app.use("/post", postRouter)
 
