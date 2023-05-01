@@ -6,12 +6,15 @@ import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
 import postRouter from "./routes/post.js"
 import commentRouter from "./routes/comment.js"
+import cors from "cors"
 
 
 export default function createServer() {
     const app = express();
     //middlewares
     app.use(express.json());
+
+    app.use(cors());
 
     app.use(session({
         secret: "thisIsASecretSessionKey",
