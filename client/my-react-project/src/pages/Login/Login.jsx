@@ -3,10 +3,12 @@ import "./LoginPage.scss";
 import logo from "../../images/logo.png"
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/auth";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +23,8 @@ function Login() {
     console.log("Submitted!", username, password);
     // Replace this with your actual login logic
 
-    dispatch(loginUser(username, password))
+    dispatch(loginUser(username, password));
+    navigate("/userHome")
   }
 
   return (
@@ -32,7 +35,7 @@ function Login() {
       <div className={`login-container ${isAnimating ? "is-animating" : ""}`}>
         <div className="login-content">
           <h1>Login</h1>
-          <form onSubmit={handleSubmit}>
+          <form >
             <label>
               Username
               <input 
@@ -49,7 +52,7 @@ function Login() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}/>
             </label>
-            <button type="button">
+            <button type="button" onClick={handleSubmit}>
               Login
             </button>
           </form>

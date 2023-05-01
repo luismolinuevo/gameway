@@ -8,26 +8,29 @@ export const slice = createSlice({
     isLoggedIn: false,
     isLoading: false,
     error: null,
+    loginStatus: null
   },
   reducers: {
         loginSuccess: (state, action) => {
             state.isLoggedIn = true;
             state.user = action.payload;
-            localStorage.setItem('token', action.payload.token);
         },
         error: (state, action) => {
           state.error = action.payload;
         },
+        loginStatus: (state, action) => {
+            state.loginStatus = action.payload;
+        },
   },
 });
 
-export const { loginSuccess } = slice.actions;
+export const { loginSuccess, error, loginStatus } = slice.actions;
 
 // Thunk action to log in a user
 export const loginUser = (username, password) => async (dispatch) => {
   try {
     const response = await axios.post('http://localhost:8080/auth/login', {
-        userName: username,
+        username: username,
         password: password
     });
     console.log(response.data)
@@ -37,14 +40,14 @@ export const loginUser = (username, password) => async (dispatch) => {
   }
 };
 
-// Thunk action to check if a user is logged in
-// export const checkLoginStatus = () => async dispatch => {
-//   try {
-//     const response = await axios.get('http://localhost:8080/auth/login');
-//     // dispatch(checkLoginSuccess(response.data));
-//   } catch (error) {
-//     dispatch(checkLoginFailure(error.message));
-//   }
-// };
+//Thunk action to check if a user is logged in
+export const checkLoginStatus = () => async dispatch => {
+  try {
+    const response = await axios.get('http://localhost:8080/auth/login');
+    dispatch(loginSuccess(response.data));
+  } catch (error) {
+    dispatch(error(error));
+  }
+};
 
 export default slice.reducer;
