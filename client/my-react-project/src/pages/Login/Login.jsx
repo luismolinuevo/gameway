@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./LoginPage.scss";
 import logo from "../../images/logo.png"
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/auth";
+import { useNavigate } from "react-router-dom";
+
+
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,6 +22,9 @@ function Login() {
     }, 1000);
     console.log("Submitted!", username, password);
     // Replace this with your actual login logic
+
+    dispatch(loginUser(username, password));
+    navigate("/userHome")
   }
 
   return (
@@ -25,8 +35,7 @@ function Login() {
       <div className={`login-container ${isAnimating ? "is-animating" : ""}`}>
         <div className="login-content">
           <h1>Login</h1>
-          <form>
-            
+          <form >
             <label>
               Username
               <input 

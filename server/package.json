@@ -24,7 +24,7 @@
   "devDependencies": {
     "dotenv": "^16.0.3",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.21",
+    "nodemon": "^2.0.22",
     "prisma": "^4.11.0"
   }
 }
