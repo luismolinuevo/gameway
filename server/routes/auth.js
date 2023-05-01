@@ -5,6 +5,14 @@ import prisma from "../db/index.js";
 export default function createAuthRouter(passport) {
   const router = express.Router();
 
+  router.get("/login", async (req, res) => {
+    if(req.user) {
+      res.json(req.user);
+    } else {
+      res.sendStatus(401)
+    }
+  })
+
   router.post(
     "/login",
     //Need some type of middleware to handle the login
