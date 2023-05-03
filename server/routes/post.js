@@ -32,6 +32,22 @@ export default function createPostRouter(passport) {
     })
   });
 
+  //gets post for a specfic game
+  router.get("/specgame/:game", async (req, res) => {
+    const game = req.params.game;
+
+    const allPost = await prisma.post.findMany({
+      where: {
+        game: game
+      }
+    });
+    
+    res.status(200).json({
+      success: true,
+      allPost
+    })
+  });
+
   //This route gets a specific post
   router.get("/:postId", async (req, res) => {
     const postId = req.params.postId;
