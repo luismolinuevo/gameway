@@ -23,6 +23,7 @@ model User {
 
 model Post {
   id       Int       @unique @default(autoincrement())
+  game     String
   title    String    @db.VarChar(255)
   body     String    @db.VarChar(255)
   casual   Boolean   @default(false)
