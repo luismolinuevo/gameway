@@ -21,14 +21,16 @@ function UserHome() {
         const accessToken = response.data.access_token;
 
         // Use the access token to make a GET request to obtain the top 6 trending games
-        axios.get("https://api.twitch.tv/helix/games/top?first=10", {
+        axios.get("https://api.twitch.tv/helix/games/top", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             "Client-Id": "0g6f402c17u79hmds4hhynnifsr4od",
           },
         })
         .then((response) => {
-          setGames(response.data.data.filter((game) => game.name !== "Just Chatting"));
+          const filteredGames = response.data.data.filter(
+            (game) => game.name === 'Grand Theft Auto V' || game.name === 'Counter-Strike: Global Offensive' || game.name === "Apex Legends" || game.name === "Overwatch 2" || game.name === "League of Legends" || game.name === "Fortnite" ||  game.name === "VALORANT");
+            setGames(filteredGames);
         })
         .catch((error) => {
           console.log(error);
@@ -49,7 +51,9 @@ function UserHome() {
     <div className="user">
       <Navbar />
       <div className="user-home">
-        <h1>Trending Games</h1>
+        <span className="shiny">
+        <span className="inner-shiny">Trending Games</span>
+        </span>
         <div className="games">
           {games.map((game) => (
              <Link key={game.id} to={`/games?name=${game.name}`}style={linkStyle}>
