@@ -4,8 +4,8 @@ import cookieParser from "cookie-parser";
 import passport, { Passport } from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
-import postRouter from "./routes/post.js"
-import commentRouter from "./routes/comment.js"
+import createPostRouter from "./routes/post.js"
+import createCommentRouter from "./routes/comment.js"
 import createFollowerRouter from "./routes/follower.js"
 import cors from "cors"
 
@@ -33,6 +33,8 @@ export default function createServer() {
     
     const authRouter = createAuthRouter(passport);
     const followerRouter = createFollowerRouter(passport);
+    const postRouter = createPostRouter(passport);
+    const commentRouter = createCommentRouter(passport);
     
     app.use("/auth", authRouter);
     app.use("/comment", commentRouter)
