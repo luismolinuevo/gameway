@@ -6,31 +6,31 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
-  
 }
 
 model User {
-  id Int @unique @default(autoincrement()) 
-  username String @db.VarChar(255)
-  password String @db.VarChar(255)
-  post Post[]
+  id       Int        @unique @default(autoincrement())
+  username String     @db.VarChar(255)
+  password String     @db.VarChar(255)
+  post     Post[]
+  follower Follower[]
 }
 
 //ondelete makes it so that when user is deleted the post will be deleted
 
 model Post {
-  id Int @unique @default(autoincrement()) 
-  title     String   @db.VarChar(255)
-  body String @db.VarChar(255)
-  casual Boolean @default(false)
-  comp Boolean @default(false)
-  dontcare Boolean @default(true)
-  userId Int
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  comment Comment[]
+  id       Int       @unique @default(autoincrement())
+  title    String    @db.VarChar(255)
+  body     String    @db.VarChar(255)
+  casual   Boolean   @default(false)
+  comp     Boolean   @default(false)
+  dontcare Boolean   @default(true)
+  userId   Int
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comment  Comment[]
 
   @@index([userId])
 }
@@ -38,13 +38,20 @@ model Post {
 //ondelete makes it so that when post is deleted the comments for that post will be deleted
 
 model Comment {
-  id Int @unique @default(autoincrement())
-  text String @db.VarChar(255)
+  id     Int    @unique @default(autoincrement())
+  text   String @db.VarChar(255)
   postId Int
-  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@index([postId])
 }
 
+model Follower {
+  id          Int @unique @default(autoincrement())
+  followingId Int
 
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([userId])
+}
