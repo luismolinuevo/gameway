@@ -1,7 +1,7 @@
 import prisma from "../db/index.js";
 import express from "express";
 
-export default function createAuthRouter(passport) {
+export default function createCommentRouter(passport) {
     const router = express.Router();
 
     //get all comment for a certain post
