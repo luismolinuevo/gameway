@@ -35,7 +35,7 @@ export default function createFollowerRouter(passport) {
     const createFollwer = await prisma.follower.create({
       data: {
         followingId: req.body.followingId,
-        userId: req.user.id
+        userId: req.user.id,
       },
     });
 
