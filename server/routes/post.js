@@ -41,7 +41,7 @@ export default function createPostRouter(passport) {
         game: game
       }
     });
-    
+
     res.status(200).json({
       success: true,
       allPost
@@ -60,8 +60,21 @@ export default function createPostRouter(passport) {
     res.status(200).json({
       success: true,
       userPost
-    })
+    });
 
+  });
+
+  router.get("/userpost", async (req, res) => {
+    const userPost = await prisma.post.findMany({
+      where: {
+        userId: req.user.id
+      }
+    });
+
+    res.status(200).json({
+      success: true,
+      userPost
+    })
   })
 
   //This route is for deleting posts
