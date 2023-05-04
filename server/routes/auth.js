@@ -8,15 +8,19 @@ export default function createAuthRouter(passport) {
   router.get("/:id", async (req, res) => {
     const userId = req.params.id;
 
-    const findUser = prisma.user.findFirst({
+    const findUser = await prisma.user.findFirst({
       where: {
         id: Number(userId)
+      },
+      select: {
+        username: true
       }
     });
 
+    const { username } = findUser;
     res.status(200).json({
       success: true,
-      findUser
+      username
     })
   })
 
