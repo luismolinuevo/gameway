@@ -4,43 +4,86 @@ import cookieParser from "cookie-parser";
 import passport, { Passport } from "passport";
 import setupLocalStrategy from "./auth/index.js";
 import createAuthRouter from "./routes/auth.js";
-import createPostRouter from "./routes/post.js"
-import createCommentRouter from "./routes/comment.js"
-import createFollowerRouter from "./routes/follower.js"
-import cors from "cors"
+import createPostRouter from "./routes/post.js";
+import createCommentRouter from "./routes/comment.js";
+import createFollowerRouter from "./routes/follower.js";
+import createChatRouter from "./routes/chat.js";
+import cors from "cors";
 
+import http from "http";
+import { Server } from "socket.io";
 
 export default function createServer() {
-    const app = express();
-    //middlewares
-    app.use(express.json());
+  const app = express();
+  //middlewares
+  app.use(express.json());
 
-    app.use(cors());
+  app.use(cors({ origin: "*" }));
 
-    app.use(session({
-        secret: "thisIsASecretSessionKey",
-        resave: false,
-        saveUninitialized: false,
-      }))
-    
-    app.use(cookieParser());
-    
-    setupLocalStrategy(passport);
-    
-    //Add passport session middleware
-    
-    app.use(passport.authenticate("session"));
-    
-    const authRouter = createAuthRouter(passport);
-    const followerRouter = createFollowerRouter(passport);
-    const postRouter = createPostRouter(passport);
-    const commentRouter = createCommentRouter(passport);
-    
-    app.use("/auth", authRouter);
-    app.use("/comment", commentRouter)
+  app.use(
+    session({
+      secret: "thisIsASecretSessionKey",
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
 
-    app.use("/post", postRouter)
-    app.use("/follower", followerRouter)
+  app.use(cookieParser());
 
-    return app;
+  setupLocalStrategy(passport);
+
+  //Add passport session middleware
+
+  app.use(passport.authenticate("session"));
+
+  const authRouter = createAuthRouter(passport);
+  const followerRouter = createFollowerRouter(passport);
+  const postRouter = createPostRouter(passport);
+  const commentRouter = createCommentRouter(passport);
+  const chatRouter = createChatRouter(passport);
+
+  app.use("/auth", authRouter);
+  app.use("/comment", commentRouter);
+
+  app.use("/post", postRouter);
+  app.use("/follower", followerRouter);
+  app.use("/chat", chatRouter);
+
+  //set up socket server
+  const server = http.createServer(app);
+
+  // const io = new Server(server);
+  const io = new Server(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
+    },
+  });
+
+  io.on("connection", (socket) => {
+    socket.on("joinRoom", (roomId) => {
+      socket.join(roomId);
+    });
+
+    socket.on("sendMessage", async (message, roomId) => {
+      console.log("in");
+      const newMessage = await prisma.message.create({
+        data: {
+          content: message.content,
+          user: {
+            connect: { id: Number(message.userId) },
+          },
+          createAt: new Date(),
+          chat: {
+            connect: { id: roomId },
+          },
+        },
+      });
+
+      io.to(roomId).emit("newMessage");
+    });
+  });
+
+  return server;
 }
