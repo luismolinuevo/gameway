@@ -7,6 +7,7 @@ import createAuthRouter from "./routes/auth.js";
 import createPostRouter from "./routes/post.js"
 import createCommentRouter from "./routes/comment.js"
 import createFollowerRouter from "./routes/follower.js"
+import createChatRouter from "./routes/chat.js";
 import cors from "cors"
 
 
@@ -35,12 +36,14 @@ export default function createServer() {
     const followerRouter = createFollowerRouter(passport);
     const postRouter = createPostRouter(passport);
     const commentRouter = createCommentRouter(passport);
+    const chatRouter = createChatRouter(passport);
     
     app.use("/auth", authRouter);
     app.use("/comment", commentRouter)
 
     app.use("/post", postRouter)
     app.use("/follower", followerRouter)
+    app.use("/chat", chatRouter)
 
     return app;
 }
