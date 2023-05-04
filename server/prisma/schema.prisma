@@ -12,11 +12,13 @@ datasource db {
 }
 
 model User {
-  id       Int        @unique @default(autoincrement())
+  id       Int        @id@unique @default(autoincrement())
   username String     @db.VarChar(255)
   password String     @db.VarChar(255)
   post     Post[]
   follower Follower[]
+  chatrooms Chatroom[]
+  message Message[]
 }
 
 //ondelete makes it so that when user is deleted the post will be deleted
@@ -54,5 +56,23 @@ model Follower {
   userId Int
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([userId])
+}
+
+model Chatroom {
+  id Int @id @unique @default(autoincrement())
+  users User[]
+  messages Message[]
+}
+
+model Message {
+  id             Int      @id @unique @default(autoincrement())
+  content String
+  createAt       DateTime
+  chatId         Int
+  chatroom           Chatroom @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([chatId])
   @@index([userId])
 }
