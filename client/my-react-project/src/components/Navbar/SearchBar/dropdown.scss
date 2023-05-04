@@ -1,0 +1,36 @@
+.dropdown {
+    position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 100rem;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0);
+      border-style: none;
+     
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+    padding: 20px 20px 20px 3rem;
+    background-color: #303030;
+    border-radius: 9rem;
+    height: 5rem;
+
+        img {
+        width: 4rem;
+        height:5rem;
+        margin-right: 10px;
+        border-style: solid;
+        border-color: #e2cc07;
+    }
+  }
+
+  
+  .game-name {
+    color: #e2cc07;
+    font-weight: bold;
+  }

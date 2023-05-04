@@ -4,22 +4,174 @@ $header-bg: #111111;
   font-family: 'hermes';
   src: url("../../fonts/hermes.otf") format("truetype");
 }
+
+//All background image for userhome
 body {
-  background-color: $body-bg;
-  margin: 0;
+  position: relative;
   padding: 0;
+  justify-content: center;
+  align-items: center;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0 ,#666666;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+-moz-animation: bg-scrolling-reverse 0.92s infinite;
+-o-animation: bg-scrolling-reverse 0.92s infinite;
+animation: bg-scrolling-reverse 0.92s infinite;
+-webkit-animation-timing-function: linear;
+-moz-animation-timing-function: linear;
+-o-animation-timing-function: linear;
+animation-timing-function: linear;
 }
+
+body::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(102, 102, 102, 0.836);
+}
+
+
+//animation for background everything with keyframes
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+
 .user-home{
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  h1{
-    color: #f6b93b;
-    text-align: center;
-    font-family: 'hermes';
-    font-size: 8vh;
+  margin: 0;
+  .shiny
+  {
+   
+    color: #F5C21B;
+    background: -webkit-gradient(linear, left top, left bottom, from(#F5C21B), to(#D17000));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    font-family: "hermes", sans-serif;
+    font-size: 10em;
+    font-weight: 900;
+    position: relative;
+    text-transform: uppercase;
+    
   }
+  
+  .shiny::before
+  {
+    background-position: -180px;
+    -webkit-animation: flare 5s infinite;
+    -webkit-animation-timing-function: linear;
+    background-image: linear-gradient(65deg, transparent 20%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.3) 27%, transparent 27%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    content: "Trending Games";
+    color: #FFF;
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .shiny::after
+  {
+    content: "Trending Games";
+    color: #FFF;
+    display: block;
+    position: absolute;
+    text-shadow: 0 1px #6E4414, 0 2px #6E4414, 0 3px #6E4414, 0 4px #6E4414, 0 5px #6E4414, 0 6px #6E4414, 0 7px #6E4414, 0 8px #6E4414, 0 9px #6E4414, 0 10px #6E4414;
+    top: 0;
+    z-index: -1;
+  }
+  
+  .inner-shiny::after, .inner-shiny::before
+  {
+      -webkit-animation: sparkle 5s infinite;
+    -webkit-animation-timing-function: linear;
+    background: #FFF;
+    border-radius: 100%;
+    box-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #FFF, 0 0 25px #FFF, 0 0 30px #FFF, 0 0 35px #FFF;
+    content: "";
+    display: block;
+    height: 10px;
+    opacity: 0.7;
+    position: absolute;
+    width: 10px;
+    z-index: -1;
+  }
+  
+  .inner-shiny::before
+  {
+    z-index: -1;
+    -webkit-animation-delay: 0.2s;
+    height: 7px;
+    left: 0.12em;
+    top: 0.8em;
+    width: 7px;
+  }
+  
+  .inner-shiny::after
+  {
+    z-index: -1;
+    top: 0.32em;
+    right: -5px;
+  }
+  
+  @-webkit-keyframes flare
+  {
+    0%   { background-position: -180px; }
+    30%  { background-position: 500px; }
+    100% { background-position: 1200px; }
+  }
+  
+@-webkit-keyframes sparkle
+{
+  0%   { opacity: 0; }
+  30%  { opacity: 0; }
+  40%  { opacity: 0.8; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; }
+}
   .games {
     
     display: grid;
@@ -38,8 +190,8 @@ body {
     }
     p{
       text-align: center;
-    
- 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 500;
     }
    
     
