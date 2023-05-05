@@ -18,8 +18,9 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const findUser = async () => {
+      console.log(params.id)
       try {
-        const user = await axios.get(`http://localhost:8080/auth/${params.id}`);
+        const user = await axios.get(`http://localhost:8080/auth/user/${params.id}`);
 
         if (user.status == 200) {
           setUserInfo(user.data);
@@ -31,7 +32,7 @@ export default function ProfilePage() {
       }
     };
 
-    const userPost = async () => {
+    const usersPost = async () => {
       try {
         const userPost = await axios.get(
           `http://localhost:8080/post/userspost/${params.id}`
@@ -46,10 +47,10 @@ export default function ProfilePage() {
     };
 
     findUser();
-    userPost();
+    usersPost();
 
     return () => {};
-  }, []);
+  }, [params]);
 
   const handleFollow = async () => {
     try {

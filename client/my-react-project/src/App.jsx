@@ -19,7 +19,7 @@ function App() {
           <Route path="/userHome" element={<UserHome />} />
           <Route path="/account" element={<Account />} />
           <Route path="/games" element={<Games />} />
-          <Route path="/profile" element={<ProfilePage />} /> {/*TODO need to make/add params to this */}
+          <Route path="/profile/:id" element={<ProfilePage />} /> {/*TODO need to make/add params to this */}
         </Routes>
       </div>
     </Router>
