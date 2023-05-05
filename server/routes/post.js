@@ -9,16 +9,16 @@ export default function createPostRouter(passport) {
     const newPost = await prisma.post.create({
       data: {
         title: req.body.title,
-        game: req.body.games,
+        game: req.body.game,
         body: req.body.body,
-        causal: req.body.causal,
+        casual: req.body.causal,
         comp: req.body.comp,
         dontcare: req.body.dontcare,
-        userId: req.user.userId
+        userId: req.user.id
       }
     });
 
-    res.send(201).json({
+    res.status(201).json({
       success: true
     });
   });
