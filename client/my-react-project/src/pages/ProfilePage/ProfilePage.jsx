@@ -19,7 +19,7 @@ export default function ProfilePage() {
 
         const findUser =  async () => {
             try {
-                const user = await axios.get(`http://localhost:8080/auth/${1}`);
+                const user = await axios.get(`http://localhost:8080/auth/${2}`);
 
                 if(user.status == 200) {
                     setUserInfo(user.data);
@@ -33,7 +33,7 @@ export default function ProfilePage() {
 
         const userPost = async () => {
           try {
-            const userPost = await axios.get("http://localhost:8080/post/userpost");
+            const userPost = await axios.get(`http://localhost:8080/post/userspost/${2}`);
             if(userPost.status == 200) {
               setUserPost(userPost.data);
               console.log(userPost.data)

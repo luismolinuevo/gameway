@@ -64,18 +64,19 @@ export default function createPostRouter(passport) {
 
   });
 
-  router.get("/userpost", async (req, res) => {
+  router.get("/userspost/:userId", async (req, res) => {
+    const userId = Number(req.params.userId)
     const userPost = await prisma.post.findMany({
       where: {
-        userId: req.user.id
+        userId: userId
       }
     });
 
     res.status(200).json({
       success: true,
       userPost
-    })
-  })
+    });
+  });
 
   //This route is for deleting posts
   router.delete('/:postId', async (req, res) => {
