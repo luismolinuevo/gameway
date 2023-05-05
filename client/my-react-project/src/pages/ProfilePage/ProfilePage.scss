@@ -64,7 +64,7 @@
   }
 
   .follower-actions {
-    margin-right: 30px;
+    margin-right: 20px;
   }
 
   .follower-icons {
@@ -72,7 +72,7 @@
     color: black;
   }
 
-  .see-post-container {
+  .see-post-toggle-container {
     display: flex;
     align-items: end;
   }
@@ -84,3 +84,19 @@
     color: white;
     cursor: pointer;
   }
+
+  .off {
+    display: none;
+  }
+
+  .see-post-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-top: 2rem;
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    padding: 1.8rem;
+    box-shadow: 0px 5px 20px 1px;
+  }
+

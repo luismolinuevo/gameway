@@ -11,6 +11,7 @@ export default function ProfilePage() {
   const params = useParams();
   const [userInfo, setUserInfo] = useState([]);
   const [userPost, setUserPost] = useState([]);
+  const [seePost, setSeePost] = useState(false);
 
   //TODO make params work , fetch all post, maybe see followers, and following
   //TODO show all post with button
@@ -51,8 +52,22 @@ export default function ProfilePage() {
     return () => {};
   }, []);
 
-  const handleFollow = () => {
-    
+  const handleFollow = async () => {
+    try {
+      const follow = await axios.post(`http://localhost:8080/post/userspost/${2}`, {
+        followingId: params.id
+      });
+      if (userPost.status == 200) {
+        setUserPost(userPost.data);
+        console.log(userPost.data);
+      }
+    } catch (error) {
+      console.log("Error fetching user post");
+    }
+  }
+
+  const handleSeePost = () => {
+    setSeePost((prevValue) => !prevValue)
   }
 
   return (
@@ -86,9 +101,12 @@ export default function ProfilePage() {
               </div>
             </div>
           </div>
-          <div className="see-post-container ">
-            <button className="see-post">See Post</button>
+          <div className="see-post-toggle-container">
+            <button className="see-post" onClick={() => handleSeePost()}>{seePost ? "Close Post" : "See Post"}</button>
           </div>
+        </div>
+        <div className={`${seePost === true ? "see-post-container" : "off"}`}>
+          {/**map through data in here */}
         </div>
       </div>
     </div>
