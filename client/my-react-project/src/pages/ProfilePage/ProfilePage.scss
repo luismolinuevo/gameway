@@ -1,0 +1,105 @@
+
+
+.profile {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #383838;
+    min-height: 100vh;
+    width: 100%; /* Add this line */
+    flex-wrap: wrap;
+   
+  }
+  .profile-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+    margin-top: 2rem;
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    padding: 1.8rem;
+    box-shadow: 0px 5px 20px 1px;
+    flex-wrap: wrap;
+  }
+
+  .profile-info-left {
+    display: flex;
+    // flex-direction: column;
+    // align-items: center;
+  }
+  
+  .profile-user-container {
+    display:flex;
+    align-items: center;
+    background-color: #636262;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    width: 240px;
+    height: 240px;
+    
+  }
+  
+  .profile-user-name {
+    font-size: 2.5rem;
+    // margin-top: 2rem;
+  }
+
+  .profile-actions {
+    margin-left: 50px;
+    display: flex;
+  }
+  
+  .profile-buttons {
+    padding: 10px;
+    margin-right: 5px;
+    font-size: 1.5rem;
+    background-color: #f6b93b;
+    color: white;
+    cursor: pointer;
+  }
+
+  .following {
+    display: flex;
+    // align-items: top;
+    font-size: 1.5rem;
+  }
+
+  .follower-actions {
+    margin-right: 20px;
+  }
+
+  .follower-icons {
+    width: 100%;
+    color: black;
+  }
+
+  .see-post-toggle-container {
+    display: flex;
+    align-items: end;
+  }
+
+  .see-post {
+    padding: 10px;
+    font-size: 1.0rem;
+    background-color: #f6b93b;
+    color: white;
+    cursor: pointer;
+  }
+
+  .off {
+    display: none;
+  }
+
+  .see-post-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-top: 2rem;
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    padding: 1.8rem;
+    box-shadow: 0px 5px 20px 1px;
+  }
+

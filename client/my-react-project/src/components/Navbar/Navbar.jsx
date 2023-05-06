@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaUserAstronaut, FaBell } from "react-icons/fa";
+import { FaUserAstronaut, FaHome } from "react-icons/fa";
 import { RiMessage3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import SearchBar from './SearchBar/SearchBar';
@@ -41,8 +41,29 @@ function Navbar() {
             <p className="user-name">Tom</p>
           </div>
         </Link>
-        <FaBell style={{ color: "yellow", marginRight: "5vh" }} size={33} />
-        <RiMessage3Fill style={{ color: "yellow" }} size={35} />
+        
+        <div className="nav-button">
+        <Link to="/userhome">
+        <FaHome className="home-button" 
+        style={{
+          color: "yellow",
+          marginRight: "5vh" }} 
+        size={40} 
+       />
+        </Link>
+        <p>Home</p>
+      </div>
+
+      <div className="nav-button">
+        <RiMessage3Fill 
+        style={{ color: "yellow",
+                  marginLeft: "1vh" }} 
+        size={40} />
+
+
+      
+      <p>Messages</p>
+      </div>
       </div>
       <SearchBar onSearch={handleSearch} />
     </nav>

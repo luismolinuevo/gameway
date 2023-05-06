@@ -1,8 +1,8 @@
 $body-bg: #4A4A4A;
 $header-bg: #111111;
 @font-face {
-  font-family: 'hermes';
-  src: url("../../fonts/hermes.otf") format("truetype");
+  font-family: ggsans, "hermes";
+  src: url("../../fonts/ggsans-Normal.ttf"), url("../../fonts/hermes.otf");
 }
 body {
   background-color: $body-bg;
@@ -18,46 +18,122 @@ body {
   background-color: #383838;
   min-height: 100vh;
   width: 100%; /* Add this line */
- 
+  font-family: ggsans;
 }
 .account-info-container {
   display: flex;
   justify-content: space-between;
   width: 90%;
-  margin-top: 2rem;
+  margin: 5rem;
   background-color: #4b4b4b;
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0px 5px 20px 1px;
+
+  .account-buttons-container{
+    display: flex;
+    flex-direction: column;
+    
+
+    .account-button {
+      width: 140px;
+      height: 45px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #fcfcfc;
+      background-color: #1a1a1a;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+      margin-top: 3rem;
+      &:hover {
+        background-color: #d9e52e;
+        box-shadow: 0px 15px 20px rgba(0, 54, 16, 0.4);
+        color: #000000;
+        font-weight: 1000;
+        transform: translateY(-7px);
+      }
+    }
+  }
 }
 
 .account-info-left {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5rem;
 }
 
 
 
 .user-container {
-  background-color: #636262;
+  background-color: #575555;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 240px;
   height: 240px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+ 
+  &:hover{
+    background-color: #b7d605;
+   
+  }
+  
 }
+
 
 .user-name {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-top: 2rem;
+  font-weight: 900;
+  font-family: "hermes";
 }
-
+.divider{
+  position: static;
+  width: .5rem;
+  background-color: #f7f30673;
+  border-radius: 2rem;
+}
 .account-info-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 10rem;
+
+  .account-button-edit{
+    width: 20rem;
+      height: 45px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #fcfcfc;
+      background-color: #1a1a1a;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+      margin-top: 3rem;
+      &:hover {
+        background-color: #d9e52e;
+        box-shadow: 0px 15px 20px rgba(0, 54, 16, 0.4);
+        color: #000000;
+        font-weight: 1000;
+        transform: translateY(-7px);
+      }
+  }
 }
 
 .account-info-row {
@@ -75,23 +151,49 @@ body {
   font-size: 1.2rem;
 }
 
+.account-info-label-password{
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  margin-top: 1.8rem;
+}
 .password-container {
   position: relative;
+  display:flex;
+  margin-left: 3rem;
   .password-toggle{
-    background-color: rgb(170, 170, 5);
-    border: none;
+    margin-left: 2rem;
     width: 11vh;
     height: 8vh;
-    border-radius: 35%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #fcfcfc;
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      background-color: #181818;
+      box-shadow: 0px 15px 20px rgba(0, 54, 16, 0.4);
+      color: #b7d605;
+      font-weight: 1000;
+      transform: translateY(-3px);
+    }
   }
   .account-info-password {  
-    margin-top: 1vh;
+  
     background-color: #83414100;
     border: none;
     
     font-size: 1.2rem;
     width: 60%;
-    margin-bottom: 2rem;
+    
     padding: 0.5rem;
     &:focus {
       outline: none;
