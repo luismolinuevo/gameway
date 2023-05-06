@@ -14,48 +14,53 @@ function SideBar(){
     }
 
     return (
-        <div className={`sidebar ${isOpen ? 'open': ''}`}>
-            {/*The header of the side bar. I need to figure out how to make the toggle button to work. 
-            Right now when I press toggle, the entire side bar disappears including the toggle button*/}
-            <div className="sidebar--logo_content">
-                <FaGamepad />
-                <div className="logo_name">Game Way</div>
+        <div className="toggle">
+            <button onClick={handleToggle}><AiOutlineMenu /></button>
+            <div className={`sidebar ${isOpen ? 'open': ''}`}>
+                {/*The header of the side bar. I need to figure out how to make the toggle button to work. 
+                Right now when I press toggle, the entire side bar disappears including the toggle button*/}
                 <button onClick={handleToggle}><AiOutlineMenu /></button>
-                
-            </div>
-            {/*The list of pages that are going to be in the side bar*/}
-            <ul>
-                <li>
-                    <Link to="/">
-                        <FaHome />
-                        <span className='links-name'>Home</span>
-                    </Link>
+                <div className="sidebar--logo_content">
+                    <FaGamepad />
+                    <div className="logo_name">Game Way</div>
                     
-                </li>
-                <li>
-                    <Link to="/games">
-                        <FaDiceFour />
-                        <span className='links-name'>Games</span>
-                    </Link>
-                </li>
-                <li>
-                    {/*I need to make the post page for me to link it. Do this later*/}
-                    <FaFileAlt />
-                    <span className='links-name'>Posts</span>
-                </li>
-                <li>
-                    {/*The chat room page also needs to be made for me to link it*/}
-                    <FaTerminal />
-                    <span className='links-name'>Chat</span>
-                </li>
-                <li>
-                    <Link to="/account">
-                        <FaUserAstronaut />
-                        <span className='links-name'>Profile</span>
-                    </Link>
-                </li>
-            </ul>
+                    
+                </div>
+                {/*The list of pages that are going to be in the side bar*/}
+                <ul>
+                    <li>
+                        <Link to="/">
+                            <FaHome />
+                            <span className='links-name'>Home</span>
+                        </Link>
+                        
+                    </li>
+                    <li>
+                        <Link to="/games">
+                            <FaDiceFour />
+                            <span className='links-name'>Games</span>
+                        </Link>
+                    </li>
+                    <li>
+                        {/*I need to make the post page for me to link it. Do this later*/}
+                        <FaFileAlt />
+                        <span className='links-name'>Posts</span>
+                    </li>
+                    <li>
+                        {/*The chat room page also needs to be made for me to link it*/}
+                        <FaTerminal />
+                        <span className='links-name'>Chat</span>
+                    </li>
+                    <li>
+                        <Link to="/account">
+                            <FaUserAstronaut />
+                            <span className='links-name'>Profile</span>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </div>
+        
     )
 }
 export default SideBar;
