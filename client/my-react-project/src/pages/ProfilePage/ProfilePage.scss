@@ -8,6 +8,7 @@
     background-color: #383838;
     min-height: 100vh;
     width: 100%; /* Add this line */
+    flex-wrap: wrap;
    
   }
   .profile-info-container {
@@ -19,6 +20,7 @@
     border-radius: 10px;
     padding: 1.8rem;
     box-shadow: 0px 5px 20px 1px;
+    flex-wrap: wrap;
   }
 
   .profile-info-left {
@@ -36,6 +38,7 @@
     justify-content: center;
     width: 240px;
     height: 240px;
+    
   }
   
   .profile-user-name {

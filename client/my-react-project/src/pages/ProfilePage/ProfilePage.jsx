@@ -55,12 +55,15 @@ export default function ProfilePage() {
   const handleFollow = async () => {
     try {
       const follow = await axios.post(
-        `http://localhost:8080/follower/${params.id}`,
+        `http://localhost:8080/follower/`,
+        
         {
           followingId: params.id,
           // followingId: 2,
-        }
+        },
+        
       );
+      console.log("Follow sent")
     } catch (error) {
       console.log("Error sending follower post");
     }
@@ -85,7 +88,7 @@ export default function ProfilePage() {
               <div>
                 <p className="profile-user-name">{userInfo.username}</p>
                 <div>
-                  <button className="profile-buttons">Follow</button>
+                  <button className="profile-buttons" onClick={() => handleFollow()}>Follow</button>
                   <button className="profile-buttons">Message</button>
                 </div>
               </div>
