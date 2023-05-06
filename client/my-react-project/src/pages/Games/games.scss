@@ -1,39 +1,85 @@
-$body-bg: #4A4A4A;
+$user-bg: #4A4A4A;
 $header-bg: #111111;
+
 @font-face {
   font-family: 'hermes';
   src: url("../../fonts/hermes.otf") format("truetype");
 }
+
 body {
-  background-color: $body-bg;
-  margin: 0;
-  padding: 0;
-}
-.user{
-  .games {
-    
-    .game-container{
-      padding: 5vh 10vh 5vh 10vh;
-      box-shadow: 0px 5px 20px 1px;
-      border-radius: 2vh;
-      display:flex;
-      justify-content: space-between;
-      margin: 0 auto;
-      width: 50vh;
-      background-color: #111111;
-    img {
-      border-style: solid;
-      border-color: #eeff00;
-      height: 30%;
-      width: 30%;
-      object-fit: cover;
-      border-radius: 1vh;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .usergame {
+    position: relative;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0, $user-bg;
+    -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+    -moz-animation: bg-scrolling-reverse 0.92s infinite;
+    -o-animation: bg-scrolling-reverse 0.92s infinite;
+    animation: bg-scrolling-reverse 0.92s infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(7, 7, 7, 0.13);
+   
     }
-    h1{
-      color:yellow;
-      margin: 0 auto;
-      margin-top: 8vh;
+
+    .games {
+      padding-top: 6rem;
+      background-color: rgba(0, 0, 0, 0.425);
+      .game-container {
+        padding: 5vh 10vh 5vh 10vh;
+        box-shadow: 0px 5px 20px 1px;
+        border-radius: 2vh;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 50vh;
+        background-color: #111111;
+
+        img {
+          border-style: solid;
+          border-color: #eeff00;
+          height: 30%;
+          width: 30%;
+          object-fit: cover;
+          border-radius: 1vh;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        &:hover {
+          background-color: #2EE59D;
+          box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+          color: #fff;
+          transform: translateY(-7px);
+        }
+        }
+
+        h1 {
+          color: yellow;
+          margin: 0 auto;
+          margin-top: 8vh;
+        }
+      }
     }
-    }
-}
+  }
 }

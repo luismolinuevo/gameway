@@ -29,7 +29,15 @@ function UserHome() {
         })
         .then((response) => {
           const filteredGames = response.data.data.filter(
-            (game) => game.name === 'Grand Theft Auto V' || game.name === 'Counter-Strike: Global Offensive' || game.name === "Apex Legends" || game.name === "Overwatch 2" || game.name === "League of Legends" || game.name === "Fortnite" ||  game.name === "VALORANT");
+            //only focusing on these games at the moment
+            (game) => 
+            game.name === 'Grand Theft Auto V' || 
+            game.name === 'Counter-Strike: Global Offensive' || 
+            game.name === "Apex Legends" || 
+            game.name === "Overwatch 2" || 
+            game.name === "League of Legends" || 
+            game.name === "Fortnite" ||  
+            game.name === "VALORANT");
             setGames(filteredGames);
         })
         .catch((error) => {
@@ -58,8 +66,8 @@ function UserHome() {
           {games.map((game) => (
              <Link key={game.id} to={`/games?name=${game.name}`}style={linkStyle}>
             <div key={game.id}>
-            <img  src={game.box_art_url.replace("{width}", "300").replace("{height}", "400")} alt={game.name} />
-            <p>{game.name}</p>
+            <img  src={game.box_art_url.replace("{width}", "300").replace("{height}", "400")} alt={game.name}></img>
+            <p className="game-name">{game.name}</p>
             </div>
             </Link>
           ))}
