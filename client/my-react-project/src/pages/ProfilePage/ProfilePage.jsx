@@ -12,9 +12,10 @@ export default function ProfilePage() {
   const [userPost, setUserPost] = useState([]);
   const [seePost, setSeePost] = useState(false);
 
-  //TODO make params work , fetch all post, maybe see followers, and following
-  //TODO show all post with button
-  //TODO make buttons work
+  //TODO make it not possible for someone who is following someone to follow again, change button to unfollow and make that work
+  //TODO style/map through post
+  //TODO chat button work
+  //TODO try and make responsive
 
   useEffect(() => {
     const findUser = async () => {
