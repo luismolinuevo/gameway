@@ -4,6 +4,7 @@ import { RiMessage3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import SearchBar from './SearchBar/SearchBar';
 import "./navbar.scss";
+import SideBar from "./SideBar/Sidebar";
 
 function Navbar() {
   const [searchInput, setSearchInput] = useState("");
@@ -32,16 +33,8 @@ function Navbar() {
 
   return (
     <nav className="navbar">
+      <SideBar className="user" />
       <div className="navbar__icons">
-        <Link to="/account" style={linkStyle}>
-          <div className="user">
-            <div className="user-icon">
-              <FaUserAstronaut style={{ color: "yellow" }} size={30} />
-            </div>
-            <p className="user-name">Tom</p>
-          </div>
-        </Link>
-        
         <div className="nav-button">
         <Link to="/userhome">
         <FaHome className="home-button" 
