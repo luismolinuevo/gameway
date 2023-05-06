@@ -34,30 +34,6 @@ function Navbar() {
   return (
     <nav className="navbar">
       <SideBar className="user" />
-      <div className="navbar__icons">
-        <div className="nav-button">
-        <Link to="/userhome">
-        <FaHome className="home-button" 
-        style={{
-          color: "yellow",
-          marginRight: "5vh" }} 
-        size={40} 
-       />
-        </Link>
-        <p>Home</p>
-      </div>
-
-      <div className="nav-button">
-        <RiMessage3Fill 
-        style={{ color: "yellow",
-                  marginLeft: "1vh" }} 
-        size={40} />
-
-
-      
-      <p>Messages</p>
-      </div>
-      </div>
       <SearchBar onSearch={handleSearch} />
     </nav>
   );
