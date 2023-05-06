@@ -9,6 +9,7 @@ import createCommentRouter from "./routes/comment.js";
 import createFollowerRouter from "./routes/follower.js";
 import createChatRouter from "./routes/chat.js";
 import cors from "cors";
+import MySQLStore from "express-mysql-session";
 
 import http from "http";
 import { Server } from "socket.io";
