@@ -5,6 +5,25 @@ import prisma from "../db/index.js";
 export default function createAuthRouter(passport) {
   const router = express.Router();
 
+  router.get("/user/:id", async (req, res) => {
+    const userId = req.params.id;
+
+    const findUser = await prisma.user.findFirst({
+      where: {
+        id: parseInt(userId)
+      },
+      select: {
+        username: true
+      }
+    });
+
+    const { username } = findUser;
+    res.status(200).json({
+      success: true,
+      username
+    })
+  })
+
   router.get("/login", async (req, res) => {
     if(req.user) {
       res.json(req.user);

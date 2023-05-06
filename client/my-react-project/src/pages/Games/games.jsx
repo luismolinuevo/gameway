@@ -49,7 +49,7 @@ function Games() {
   }, [gameName]);
   
   return (
-    <div className="user">
+    <div className="usergame">
       <Navbar />
       <div className="games">
         <div className="game-container">
