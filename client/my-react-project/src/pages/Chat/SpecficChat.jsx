@@ -1,5 +1,17 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect} from 'react'; 
 import "./SpecficChat.scss";
+import axios from "axios";
+import { io } from "socket.io-client";
+
+const socket = io(":8080", {
+    reconnectionDelay: 1000,
+    reconnection: true,
+    reconnectionAttemps: 10,
+    transports: ["websocket"],
+    agent: false,
+    upgrade: false,
+    rejectUnauthorized: false,
+  });
 
 export default function SpecficChat() {
     const [message, setMessage] = useState("");
