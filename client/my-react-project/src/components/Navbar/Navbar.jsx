@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FaUserAstronaut, FaBell } from "react-icons/fa";
+import { FaUserAstronaut, FaHome } from "react-icons/fa";
 import { RiMessage3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import SearchBar from './SearchBar/SearchBar';
 import "./navbar.scss";
+import SideBar from "./SideBar/Sidebar";
 
 function Navbar() {
   const [searchInput, setSearchInput] = useState("");
@@ -32,18 +33,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar__icons">
-        <Link to="/account" style={linkStyle}>
-          <div className="user">
-            <div className="user-icon">
-              <FaUserAstronaut style={{ color: "yellow" }} size={30} />
-            </div>
-            <p className="user-name">Tom</p>
-          </div>
-        </Link>
-        <FaBell style={{ color: "yellow", marginRight: "5vh" }} size={33} />
-        <RiMessage3Fill style={{ color: "yellow" }} size={35} />
-      </div>
+      <SideBar className="user" />
       <SearchBar onSearch={handleSearch} />
     </nav>
   );
