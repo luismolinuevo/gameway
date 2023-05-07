@@ -21,7 +21,7 @@ function App() {
         <Route path="/account" element={<Account/>}/>
         <Route path="/games" element={<Games />} />
         <Route path="/profile/:id" element={<ProfilePage/>}/>
-        <Route paht="/chat/:id" element={<SpecficChat/>} />
+        <Route path="/chat/:id" element={<SpecficChat/>} />
         </Routes>
       </div>
     </Router>
