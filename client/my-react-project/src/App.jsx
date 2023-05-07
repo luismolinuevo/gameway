@@ -23,6 +23,8 @@ function App() {
         <Route path="/games" element={<Games />} />
         <Route path="/profile/:id" element={<ProfilePage/>}/>
         <Route path="/profileFollowers" element={<ProfileFollowers/>}/>
+       
+       
         <Route paht="/chat/:id" element={<SpecficChat/>} />
         </Routes>
       </div>
