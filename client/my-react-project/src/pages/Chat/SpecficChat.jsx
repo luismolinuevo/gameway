@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SpecficChat.scss";
 import axios from "axios";
 import { io } from "socket.io-client";
@@ -16,7 +16,8 @@ const socket = io(":8080", {
 
 export default function SpecficChat() {
   const [inputMessage, setInputMessage] = useState("");
-  const [messages, setMessages] = useState("");
+  const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
   const params = useParams();
 
   useEffect(() => {
@@ -38,6 +39,10 @@ export default function SpecficChat() {
     };
   }, [params.id]);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   const fetchMessages = async () => {
     try {
       const response = await axios.get(
@@ -47,7 +52,7 @@ export default function SpecficChat() {
 
       if (success) {
         console.log(getChat);
-        setMessages(getChat.offermessages);
+        setMessages(getChat.messages);
       }
     } catch (error) {
       console.log("Error fetching messages:", error);
@@ -72,14 +77,27 @@ export default function SpecficChat() {
     }
   };
 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="chatroom">
       <div className="chatbox-container">
         <p>Other persons username</p>
         <div className="message-container">
-          <p>message</p>
+          {messages.length != 0 ? (
+            messages.map((items) => (
+              <div className="" key={items.id}>
+                <p className="">{items.content}</p>
+              </div>
+            ))
+          ) : (
+            <p></p>
+          )}
+          <div ref={messagesEndRef} />
         </div>
-        <div>
+        <div className="input-container">
           {/* <form onSubmit={handleSubmit}> */}
           <input
             type="text"
