@@ -1,3 +1,5 @@
+// import * as dotenv from 'dotenv' 
+// dotenv.config()
 import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
@@ -9,23 +11,38 @@ import createCommentRouter from "./routes/comment.js";
 import createFollowerRouter from "./routes/follower.js";
 import createChatRouter from "./routes/chat.js";
 import cors from "cors";
-import MySQLStore from "express-mysql-session";
+import prisma from "./db/index.js";
+import {PrismaSessionStore} from '@quixo3/prisma-session-store';
 
 import http from "http";
 import { Server } from "socket.io";
 
 export default function createServer() {
+  
+
   const app = express();
   //middlewares
   app.use(express.json());
 
   app.use(cors({ origin: "*" }));
 
+
   app.use(
     session({
       secret: "thisIsASecretSessionKey",
       resave: false,
       saveUninitialized: false,
+      store: new PrismaSessionStore(
+        prisma,
+        {
+          checkPeriod: 2 * 60 * 1000,  //ms
+          dbRecordIdIsSessionId: true,
+          dbRecordIdFunction: undefined,
+        }
+      ),
+      cookie: {
+        maxAge: 24 * 60 * 60 * 1000, // Session expiration time (in milliseconds)
+      },
     })
   );
 
