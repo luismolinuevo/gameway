@@ -93,7 +93,7 @@ export default function createServer() {
             connect: { id: Number(message.userId) },
           },
           createAt: new Date(),
-          chat: {
+          chatroom: {
             connect: { id: roomId },
           },
         },
