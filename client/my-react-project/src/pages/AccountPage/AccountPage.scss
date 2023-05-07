@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #383838;
+  background-color: #3f3e3e;
   min-height: 100vh;
   width: 100%; /* Add this line */
   font-family: ggsans;
@@ -149,6 +149,7 @@ body {
 
 .account-info-value {
   font-size: 1.2rem;
+  color:#131313;
 }
 
 .account-info-label-password{

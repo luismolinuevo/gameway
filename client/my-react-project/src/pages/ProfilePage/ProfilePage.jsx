@@ -79,6 +79,7 @@ export default function ProfilePage() {
       <div className="profile">
         <Navbar />
         <div className="profile-info-container">
+          
           <div className="profile-info-left">
             <div className="profile-user-icon">
               <div className="profile-user-container">
@@ -87,13 +88,16 @@ export default function ProfilePage() {
             </div>
             <div className="profile-actions">
               <div>
-                <p className="profile-user-name">{userInfo.username}</p>
+                <p className="profile-user-name">Test:{userInfo.username}</p>
                 <div>
                   <button className="profile-buttons" onClick={() => handleFollow()}>Follow</button>
                   <button className="profile-buttons">Message</button>
                 </div>
               </div>
-              <div className="following">
+             
+            </div>
+          </div>
+          <div className="profile-info-right">  <div className="following">
                 <div className="follower-actions">
                   <p>Following</p>
                   <Link to="">
@@ -107,7 +111,6 @@ export default function ProfilePage() {
                   </Link>
                 </div>
               </div>
-            </div>
           </div>
           <div className="see-post-toggle-container">
             <button className="see-post" onClick={() => handleSeePost()}>

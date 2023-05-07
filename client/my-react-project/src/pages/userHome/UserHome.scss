@@ -1,5 +1,5 @@
-$body-bg: #4A4A4A;
-$header-bg: #111111;
+$body-bg: #4a4a4a;
+$header-bg: #000000;
 @font-face {
   font-family: 'hermes';
   src: url("../../fonts/hermes.otf") format("truetype");
@@ -11,15 +11,15 @@ body {
   padding: 0;
   justify-content: center;
   align-items: center;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0 ,#666666;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0 ,#424242;
   -webkit-animation: bg-scrolling-reverse 0.92s infinite;
--moz-animation: bg-scrolling-reverse 0.92s infinite;
--o-animation: bg-scrolling-reverse 0.92s infinite;
-animation: bg-scrolling-reverse 0.92s infinite;
--webkit-animation-timing-function: linear;
--moz-animation-timing-function: linear;
--o-animation-timing-function: linear;
-animation-timing-function: linear;
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  animation: bg-scrolling-reverse 0.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 body::before {
@@ -30,7 +30,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(102, 102, 102, 0.836);
+  background: rgba(95, 95, 95, 0.705);
 }
 
 
@@ -86,7 +86,7 @@ body::before {
   {
    
     color: #F5C21B;
-    background: -webkit-gradient(linear, left top, left bottom, from(#F5C21B), to(#D17000));
+    background: -webkit-gradient(linear, left top, left bottom, from(#def700), to(#fc8f00));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -201,7 +201,7 @@ body::before {
     }
     }
     .game-name{
-      color:#111111;
+      color:#ffffff;
 
       text-align: center;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

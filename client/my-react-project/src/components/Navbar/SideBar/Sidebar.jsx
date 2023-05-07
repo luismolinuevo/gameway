@@ -19,40 +19,42 @@ function SideBar(){
             <div className={`sidebar ${isOpen ? 'open': ''}`}>
                 {/*The header of the side bar. I need to figure out how to make the toggle button to work. 
                 Right now when I press toggle, the entire side bar disappears including the toggle button*/}
+                <div className='toggle--container'>
                 <button onClick={handleToggle} className="toggle--menu"><FaTimes /></button>
                 {/* <hr/> */}
-                <div className="sidebar--logo_content">
-                    <FaGamepad />
-                    <div className="sidebar--logo_name">Game Way</div>
+                    <div className="sidebar--logo_content">
+                        <FaGamepad size={70}/>
+                        <div className="sidebar--logo_name">Game Way</div>
+                    </div>
                 </div>
                 {/*The list of pages that are going to be in the side bar*/}
                 <ul className="sidebar--list">
                     <li className="sidebar--contents">
                         <Link className="sidebar--link" to="/userHome">
-                            <FaHome />
+                            <FaHome size={30}/>
                             <span className='links-name'>Home</span>
                         </Link>
                         
                     </li>
                     <li className="sidebar--contents">
                         <Link className="sidebar--link" to="/games">
-                            <FaDiceFour />
+                            <FaDiceFour size={30}/>
                             <span className='links-name'>Games</span>
                         </Link>
                     </li>
                     <li className="sidebar--contents">
                         {/*I need to make the post page for me to link it. Do this later*/}
-                        <FaFileAlt />
+                        <FaFileAlt size={30}/>
                         <span className='links-name'>Posts</span>
                     </li>
                     <li className="sidebar--contents">
                         {/*The chat room page also needs to be made for me to link it*/}
-                        <FaTerminal />
+                        <FaTerminal size={30}/>
                         <span className='links-name'>Chat</span>
                     </li>
                     <li className="sidebar--contents">
                         <Link className="sidebar--link" to="/account">
-                            <FaUserAstronaut />
+                            <FaUserAstronaut size={30}/>
                             <span className='links-name'>Settings</span>
                         </Link>
                     </li>

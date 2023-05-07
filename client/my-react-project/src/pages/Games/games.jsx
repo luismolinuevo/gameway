@@ -49,8 +49,11 @@ function Games() {
   }, [gameName]);
   
   return (
+  <div className="body">
+  <Navbar />
     <div className="usergame">
-      <Navbar />
+      
+      <div className="left-container">
       <div className="games">
         <div className="game-container">
           <img className="game-image" src={imageUrl} alt={gameTitle} />
@@ -59,6 +62,12 @@ function Games() {
           </div>
         </div>
       </div>
+    </div>
+    <div className="right-container">
+      <button>Create Post</button>
+      <div className="post">HI</div>
+    </div>
+    </div>
     </div>
   );
 }
