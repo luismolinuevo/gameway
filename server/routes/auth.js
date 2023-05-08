@@ -9,7 +9,26 @@ dotenv.config()
 const router = express.Router();
 
 
-// Post | create sign up route
+
+router.get("/user/:id", async (req, res) => {
+  const userId = req.params.id;
+
+  const findUser = await prisma.user.findFirst({
+    where: {
+      id: parseInt(userId)
+    },
+    select: {
+      username: true
+    }
+  });
+
+  const { username } = findUser;
+  res.status(200).json({
+    success: true,
+    username
+  })
+})
+
 router.post("/signup", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
@@ -126,7 +145,7 @@ router.post("/login", async (req, res) => {
 
 // Get | Shows current logged in 
 router.get(
-  "/",
+  "/login",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     res.status(200).json({
