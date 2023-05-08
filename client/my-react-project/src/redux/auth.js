@@ -18,7 +18,7 @@ export const slice = createSlice({
         error: (state, action) => {
           state.error = action.payload;
         },
-        loginStatus: (state, action) => {
+        setUserInfo: (state, action) => {
             state.loginStatus = action.payload;
         },
   },
@@ -42,12 +42,15 @@ export const loginUser = (username, password) => async (dispatch) => {
 };
 
 //Thunk action to check if a user is logged in
-export const checkLoginStatus = () => async dispatch => {
+export const checkLoginStatus = () => async (dispatch) => {
   try {
-    const response = await axios.get('http://localhost:8080/auth/login');
-    dispatch(loginSuccess(response.data));
+    const response = await axios.get('http://localhost:8080/auth/login', {
+      credentials: "include",
+    });
+    dispatch(setUserInfo(response.data));
+    console.log(response.data)
   } catch (error) {
-    dispatch(error(error));
+    console.log("error fetching user")
   }
 };
 

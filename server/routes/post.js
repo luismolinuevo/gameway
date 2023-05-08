@@ -1,11 +1,11 @@
 import express from "express";
 import prisma from "../db/index.js";
+import passport from "passport";
 
-export default function createPostRouter(passport) {
   const router = express.Router();
   
   //This route creates a post with user
-  router.post("/", async (req, res) => {
+  router.post("/", passport.authenticate("jwt", { session: false, }),async (req, res) => {
     const newPost = await prisma.post.create({
       data: {
         title: req.body.title,
@@ -79,7 +79,7 @@ export default function createPostRouter(passport) {
   });
 
   //This route is for deleting posts
-  router.delete('/:postId', async (req, res) => {
+  router.delete('/:postId', passport.authenticate("jwt", { session: false, }),async (req, res) => {
     const postId = req.params.postId;
     const userPost = await prisma.post.deleteMany({
       where: {
@@ -92,5 +92,4 @@ export default function createPostRouter(passport) {
     })
   })
 
-  return router;
-}
+  export default router;

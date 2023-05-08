@@ -3,6 +3,8 @@ import "./SpecficChat.scss";
 import axios from "axios";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { checkLoginStatus } from "../../redux/auth";
 
 const socket = io(":8080", {
   reconnectionDelay: 1000,
@@ -15,12 +17,17 @@ const socket = io(":8080", {
 });
 
 export default function SpecficChat() {
+  const dispatch = useDispatch();
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
   const params = useParams();
+  const user = useSelector((state) => state.auth.loginStatus);
+  const chatId = params.id
 
   useEffect(() => {
+    dispatch(checkLoginStatus());
+    
     socket.emit("connection", "Hi there");
     socket.emit("joinRoom", params.id);
 
@@ -37,7 +44,7 @@ export default function SpecficChat() {
       // Clean up event listeners
       socket.off("newMessage");
     };
-  }, [params.id]);
+  }, [chatId]);
 
   useEffect(() => {
     scrollToBottom();

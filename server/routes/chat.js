@@ -1,7 +1,7 @@
 import express from "express";
 import prisma from "../db/index.js";
 
-export default function createChatRouter() {
+// export default function createChatRouter() {
     const router = express.Router();
 
     //create a chatroom
@@ -84,6 +84,6 @@ export default function createChatRouter() {
         });
     });
 
-    return router;
-}
+    export default router;
+// }
 

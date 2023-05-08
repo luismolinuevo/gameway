@@ -1,74 +1,86 @@
 import prisma from "../db/index.js";
 import express from "express";
+import passport from "passport";
 
-export default function createCommentRouter(passport) {
-    const router = express.Router();
+const router = express.Router();
 
-    //get all comment for a certain post
-    router.get("/:postId", async (req, res) => {
-        const postId = req.params.postId;
+//get all comment for a certain post
+router.get(
+  "/:postId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const postId = req.params.postId;
 
-        const commentForPost = await prisma.comment.findMany({
-            where: {
-                postId: Number(postId)
-            }
-        });
-
-        res.status(200).json({
-            success: true,
-            commentForPost
-        })
-
+    const commentForPost = await prisma.comment.findMany({
+      where: {
+        postId: Number(postId),
+      },
     });
 
-    //create a comment for a post
-    router.post("/:postId", async (req, res) => {
-        const postId = req.params.postId;
+    res.status(200).json({
+      success: true,
+      commentForPost,
+    });
+  }
+);
 
-        const createPost = await prisma.comment.create({
-            data: {
-                postId: Number(postId),
-                text: req.body.text
-            }
-        });
+//create a comment for a post
+router.post(
+  "/:postId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const postId = req.params.postId;
 
-        res.status(201).json({
-            success: true,
-        });
+    const createPost = await prisma.comment.create({
+      data: {
+        postId: Number(postId),
+        text: req.body.text,
+      },
     });
 
-    //Delete a comment by comment Id
-    router.delete("/:commentId", async (req, res) => {
-        const commentId = req.params.commentId;
+    res.status(201).json({
+      success: true,
+    });
+  }
+);
 
-        const deleteComment = await prisma.comment.deleteMany({
-            where: {
-                id: Number(commentId)
-            }
-        });
+//Delete a comment by comment Id
+router.delete(
+  "/:commentId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const commentId = req.params.commentId;
 
-        res.status(200).json({
-            success: true
-        });
+    const deleteComment = await prisma.comment.deleteMany({
+      where: {
+        id: Number(commentId),
+      },
     });
 
-    //edit a comment by comment id
-    router.put("/:commentId", async (req, res) => {
-        const commentId = req.params.commentId;
+    res.status(200).json({
+      success: true,
+    });
+  }
+);
 
-        const editComment = await prisma.comment.updateMany({
-            where: {
-                id: Number(commentId)
-            }
-        });
+//edit a comment by comment id
+router.put(
+  "/:commentId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const commentId = req.params.commentId;
 
-        res.status(200).json({
-            success: true,
-            editComment
-        })
-    })
+    const editComment = await prisma.comment.updateMany({
+      where: {
+        id: Number(commentId),
+      },
+    });
 
+    res.status(200).json({
+      success: true,
+      editComment,
+    });
+  }
+);
 
-
-    return router;
-}
+export default router;
