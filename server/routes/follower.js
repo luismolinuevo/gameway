@@ -1,11 +1,12 @@
 import express from "express";
 import prisma from "../db/index.js";
+import passport from "passport";
 
-export default function createFollowerRouter(passport) {
+// export default function createFollowerRouter(passport) {
   const router = express.Router();
 
   //get all people following the user
-  router.get("/followingme", async (req, res) => {
+  router.get("/followingme", passport.authenticate("jwt", { session: false, }),async (req, res) => {
     const getFollowers = await prisma.follower.findMany({
         where: {
             followingId: req.user.id
@@ -18,7 +19,7 @@ export default function createFollowerRouter(passport) {
     });
   });
 
-  router.get("/following", async (req, res) => {
+  router.get("/following", passport.authenticate("jwt", { session: false, }),async (req, res) => {
     const getFollowing = await prisma.follower.findMany({
       where: {
         userId: req.user.id
@@ -31,7 +32,7 @@ export default function createFollowerRouter(passport) {
     })
   });
 
-  router.post("/", async (req, res) => {
+  router.post("/", passport.authenticate("jwt", { session: false, }), async (req, res) => {
     const createFollwer = await prisma.follower.create({
       data: {
         followingId: Number(req.body.followingId),
@@ -48,5 +49,5 @@ export default function createFollowerRouter(passport) {
 
 
 
-  return router;
-}
+  export default router;
+// }

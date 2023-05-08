@@ -1,99 +1,140 @@
 import express from "express";
-import argon2  from "argon2";
+import argon2 from "argon2";
+import jwt from "jsonwebtoken";
 import prisma from "../db/index.js";
+import dotenv from "dotenv";
+import passport from "passport";
+dotenv.config()
 
-export default function createAuthRouter(passport) {
-  const router = express.Router();
+const router = express.Router();
 
-  router.get("/user/:id", async (req, res) => {
-    const userId = req.params.id;
 
-    const findUser = await prisma.user.findFirst({
+// Post | create sign up route
+router.post("/signup", async (req, res) => {
+  try {
+    const foundUser = await prisma.user.findFirst({
       where: {
-        id: parseInt(userId)
+        userName: req.body.userName,
       },
-      select: {
-        username: true
+    });
+    if (foundUser) {
+      res.status(401).json({
+        success: false,
+        message: "User already exist",
+      });
+    } else {
+      // hashing password
+      try {
+        const hashPassword = await argon2.hash(req.body.password);
+        const newUser = await prisma.user.create({
+          data: {
+            userName: req.body.userName,
+            email: req.body.email,
+            password: hashPassword,
+          },
+        });
+
+        if (newUser) {
+          res.status(201).json({
+            success: true,
+            message: "User successfully created",
+          });
+        } else {
+          res.status(500).json({
+            success: false,
+            message: "User was not created. Please create a account",
+          });
+        }
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({
+          success: false,
+          message: "User was not created. Something happened",
+        });
       }
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
+
+
+
+// Post | create login route
+router.post("/login", async (req, res) => {
+  try {
+    const foundUser = await prisma.user.findFirst({
+      where: {
+        userName: req.body.userName,
+      },
     });
 
-    const { username } = findUser;
-    res.status(200).json({
-      success: true,
-      username
-    })
-  })
+    if (foundUser) {
+      try {
+        const verifyPassword = await argon2.verify(
+          foundUser.password,
+          req.body.password
+        );
 
-  router.get("/login", async (req, res) => {
-    if(req.user) {
-      res.json(req.user);
+        if (verifyPassword === true) {
+          const token = jwt.sign(
+            {
+              id: foundUser.id,
+              userName: foundUser.userName,
+              email: foundUser.email,
+            },
+            process.env.JSON_KEY
+          );
+
+          res.status(200).json({
+            success: true,
+            token: token,
+          });
+        } else {
+          res.status(401).json({
+            success: false,
+            message: "Incorrect userName or password",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
     } else {
-      res.sendStatus(401)
-    }
-  })
-
-  router.post(
-    "/login",
-    //Need some type of middleware to handle the login
-    passport.authenticate("local"),
-    (request, response) => {
-      response.status(200).json({
-        success: "true",
+      res.status(404).json({
+        success: false,
+        message: "User not found",
       });
     }
-  );
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
 
-  router.post("/signup", async (request, response) => {
-    //handle signup
-    // console.log(request.body)
-    try {
-      const foundUser = await prisma.user.findFirst({
-        where: {
-          username: request.body.username
-        }
-      })
-  
-      if(foundUser) {
-        response.status(401).json({
-          success: false,
-          message: "User already exists"
-        }) 
-      } else {
-        try {
-          const hashedPassword = await argon2.hash(request.body.password);
-  
-          const newUser = await prisma.user.create({
-            data: {
-              username: request.body.username,
-              password: hashedPassword
-            }
-          })
-  
-          if(newUser) {
-            response.status(201).json({
-              success:true,
-              message: "User successfully created"
-            });
-          } else {
-            response.status(500).json({
-              success: false,
-              message: "User was not created. Something happened"
-            })
-          }
-        } catch(e) {
-            response.status(500).json({
-              success: false,
-              message: "User was not created. Something happened"
-            })
-        }
-      }
-    } catch(e) {
-      response.status(500).json({
-        success: false,
-        message: "Something went wrong"
-      })
-    }
-  });
 
-  return router;
-}
+
+// Get | Shows current logged in 
+router.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.status(200).json({
+      success: true,
+      data: req.user,
+    });    
+  }
+);
+
+    
+export default router;
