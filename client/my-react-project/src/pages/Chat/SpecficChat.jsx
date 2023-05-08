@@ -22,7 +22,7 @@ export default function SpecficChat() {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
   const params = useParams();
-  const user = useSelector((state) => state.auth.loginStatus);
+  const user = useSelector((state) => state.auth.loginId);
   const chatId = params.id
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function SpecficChat() {
       try {
         const message = {
           content: inputMessage,
-          userId: 1, // Replace with the actual user ID
+          userId: user, // Replace with the actual user ID
         };
         // Send the message to the server
         socket.emit("sendMessage", message, Number(params.id));

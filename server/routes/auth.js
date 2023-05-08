@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
-        userName: req.body.userName,
+        username: req.body.username,
       },
     });
     if (foundUser) {
@@ -47,8 +47,7 @@ router.post("/signup", async (req, res) => {
         const hashPassword = await argon2.hash(req.body.password);
         const newUser = await prisma.user.create({
           data: {
-            userName: req.body.userName,
-            email: req.body.email,
+            username: req.body.username,
             password: hashPassword,
           },
         });
@@ -88,7 +87,7 @@ router.post("/login", async (req, res) => {
   try {
     const foundUser = await prisma.user.findFirst({
       where: {
-        userName: req.body.userName,
+        username: req.body.username,
       },
     });
 
@@ -103,8 +102,7 @@ router.post("/login", async (req, res) => {
           const token = jwt.sign(
             {
               id: foundUser.id,
-              userName: foundUser.userName,
-              email: foundUser.email,
+              username: foundUser.username,
             },
             process.env.JSON_KEY
           );
@@ -148,6 +146,7 @@ router.get(
   "/login",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req.user)
     res.status(200).json({
       success: true,
       data: req.user,
