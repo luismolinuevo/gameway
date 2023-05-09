@@ -23,18 +23,25 @@ export default function SpecficChat() {
   const messagesEndRef = useRef(null);
   const params = useParams();
   const user = useSelector((state) => state.auth.loginId);
-  const chatId = params.id
+  const chatId = Number(params.id)
 
   useEffect(() => {
     dispatch(checkLoginStatus());
     
     socket.emit("connection", "Hi there");
-    socket.emit("joinRoom", params.id);
+    socket.emit("joinRoom", chatId);
 
     // Listen for new messages
-    socket.on("newMessage", () => {
-      // Fetch the latest messages
+    // socket.on("newMessage", () => {
+    //   // Fetch the latest messages
+    //   fetchMessages();
+    // });
+    socket.on("newMessageCreated", () => {
       fetchMessages();
+      // setMessages(newMessages);
+      console.log("hey")
+      // setMessages((prevMessages) => [...prevMessages, newMessages]);
+      scrollToBottom();
     });
 
     // Fetch initial messages
@@ -58,30 +65,32 @@ export default function SpecficChat() {
       const { success, getChat } = response.data;
 
       if (success) {
-        console.log(getChat);
+        console.log(getChat.messages);
         setMessages(getChat.messages);
+        // setMessages((messages) => [...messages, ...getChat.messages]);
       }
     } catch (error) {
       console.log("Error fetching messages:", error);
     }
   };
 
-  const sendMessage = async (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
+  const sendMessage = async () => {
+    // if (event.key === "Enter") {
+      // event.preventDefault();
       try {
         const message = {
           content: inputMessage,
           userId: user, // Replace with the actual user ID
         };
         // Send the message to the server
+        setMessages((prevMessages) => [...prevMessages, message]);   //this fixed it so that messages appear on page without refresh
         socket.emit("sendMessage", message, Number(params.id));
 
         setInputMessage(""); // Clear the input field
       } catch (error) {
         console.log("Error sending message:", error);
       }
-    }
+    // }
   };
 
   const scrollToBottom = () => {
@@ -95,8 +104,8 @@ export default function SpecficChat() {
         <div className="message-container">
           {messages.length != 0 ? (
             messages.map((items) => (
-              <div className="" key={items.id}>
-                <p className="">{items.content}</p>
+              <div className={`${items.userId === user? "rightMessage-Container" : "leftMessage-Container"}`} key={items.id} >
+                <p className={`${items.userId === user? "rightMessage" : "leftMessage"}`}>{items.content}</p>
               </div>
             ))
           ) : (
@@ -107,14 +116,11 @@ export default function SpecficChat() {
         <div className="input-container">
           {/* <form onSubmit={handleSubmit}> */}
           <input
-            type="text"
             className="input"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
-            onKeyDown={sendMessage}
           />
-          {/* <button type="submit">Send</button> */}
-          {/* </form> */}
+          <button onClick={sendMessage}>Send</button>
         </div>
       </div>
     </div>

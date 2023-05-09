@@ -18,10 +18,11 @@ export default function createServer() {
   
 
   const app = express();
+  app.use(cors({ origin: "*" }));
   //middlewares
   app.use(express.json());
 
-  app.use(cors({ origin: "*" }));
+  
 
   setupJWTStrategy(passport);
 
@@ -47,24 +48,33 @@ export default function createServer() {
   io.on("connection", (socket) => {
     socket.on("joinRoom", (roomId) => {
       socket.join(roomId);
+      console.log("some on joined")
     });
 
     socket.on("sendMessage", async (message, roomId) => {
       console.log("in");
-      const newMessage = await prisma.message.create({
+      const newMessageCreated = await prisma.message.create({
         data: {
           content: message.content,
           user: {
             connect: { id: Number(message.userId) },
           },
+          // userId: Number(message.userId),
           createAt: new Date(),
           chatroom: {
             connect: { id: roomId },
           },
-        },
+        }
       });
 
-      io.to(roomId).emit("newMessage");
+      const messages = await prisma.message.findMany({
+        where: { chatId: roomId },
+        include: { user: true },
+        orderBy: { createAt: "asc" },
+      });
+      // io.to(roomId).emit(newMessage);
+
+      io.to(roomId).emit("newMessageCreated");  //changing the name from newMessage to newMessagedCreated fixed the issue somehow
     });
   });
 
