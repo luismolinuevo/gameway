@@ -8,6 +8,7 @@ import UserHome from './pages/UserHome/UserHome'
 import Account from './pages/AccountPage/AccountPage'
 import Games from './pages/Games/games'
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/account" element={<Account/>}/>
         <Route path="/games" element={<Games />} />
         <Route path="/profile/:id" element={<ProfilePage/>}/>
+        <Route path="profileFollowers/:id" element={<ProfileFollowers/>}/>
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,133 @@
+
+
+.follow {
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #383838;
+  min-height: 100vh;
+  width: 100%; /* Add this line */
+  flex-wrap: wrap;
+}
+
+.profile-follow-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  height: 55rem;
+  margin-top: 2rem;
+  background-color: #4b4b4b;
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0px 5px 20px 1px;
+  flex-wrap: wrap;
+}
+
+.profile-follow {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.profile-user-icon {
+  height: 250px;
+}
+
+.profile-user-container {
+  display: flex;
+  align-items: center;
+  background-color: #6e6e6e;
+  border-radius: 50%;
+  justify-content: center;
+  width: 240px;
+  height: 250px;
+  box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.432);
+}
+
+.followers-list, .following-list {
+  background-color: #1b1b1b;
+  
+  width: 100%;
+  margin-right: 20vh;
+  margin-top: 20vh;
+  padding: 50px;
+  height: 200px; /* set a fixed height for the element */
+  overflow-y: scroll; /* add a vertical scrollbar when content exceeds height */
+  border-radius: 2rem;
+  box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.432);
+ &::-webkit-scrollbar {
+    width: 15px; /* Set the width of the scrollbar */
+    
+  }
+
+  &::-webkit-scrollbar-track {
+    border: solid 3px transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0px 0px 15vh 15vh rgb(187, 255, 0);
+    border: solid 3px transparent;
+    border-radius: 2rem ;
+   
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #bef689; /* Set the background color of the scrollbar thumb on hover */
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    
+    .icon {
+      display: flex;
+      align-items: center;
+      background-color: #6e6e6e;
+      border-radius: 50%;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.432);
+      margin-right: 4rem;
+    }
+
+    span {
+     
+      font-weight: bold;
+    }
+  }
+}
+
+.follow-actions {
+  margin-left: 35vh;
+  display: flex;
+ 
+  .follow-user-name {
+    font-size: 2.5rem;
+    margin-left: 6vh;
+    margin-top: -15rem;
+  }
+}
+
+.follow-button {
+  box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.603);
+  padding: 10px;
+  margin-right: 7rem;
+  font-size: 1.5rem;
+  background-color: #f6b93b;
+  color: rgb(51, 51, 51);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  border-style: none;
+  border-radius: 15px;
+  &:hover {
+    background-color: #303030;
+    box-shadow: 0px .2rem .5rem rgba(217, 255, 0, 0.4);
+    color: #f1ed00;
+    font-weight: 1000;
+    transform: translateY(-4px);
+  }
+}
