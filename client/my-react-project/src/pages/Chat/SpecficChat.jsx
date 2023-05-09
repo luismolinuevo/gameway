@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { checkLoginStatus } from "../../redux/auth";
+import Navbar from "../../components/Navbar/Navbar";
 
 const socket = io(":8080", {
   reconnectionDelay: 1000,
@@ -74,9 +75,9 @@ export default function SpecficChat() {
     }
   };
 
-  const sendMessage = async () => {
-    // if (event.key === "Enter") {
-      // event.preventDefault();
+  const sendMessage = async (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
       try {
         const message = {
           content: inputMessage,
@@ -90,7 +91,7 @@ export default function SpecficChat() {
       } catch (error) {
         console.log("Error sending message:", error);
       }
-    // }
+    }
   };
 
   const scrollToBottom = () => {
@@ -99,13 +100,14 @@ export default function SpecficChat() {
 
   return (
     <div className="chatroom">
+      <Navbar />
       <div className="chatbox-container">
         <p>Other persons username</p>
         <div className="message-container">
           {messages.length != 0 ? (
             messages.map((items) => (
               <div className={`${items.userId === user? "rightMessage-Container" : "leftMessage-Container"}`} key={items.id} >
-                <p className={`${items.userId === user? "rightMessage" : "leftMessage"}`}>{items.content}</p>
+                <p className="message">{items.content}</p>
               </div>
             ))
           ) : (
@@ -119,8 +121,9 @@ export default function SpecficChat() {
             className="input"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
+            onKeyDown={sendMessage}
           />
-          <button onClick={sendMessage}>Send</button>
+          {/* <button onClick={sendMessage}>Send</button> */}
         </div>
       </div>
     </div>
