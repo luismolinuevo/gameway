@@ -63,3 +63,20 @@
   height: 32px;
   outline: none;
 }
+
+.rightMessage-Container {
+  display: flex;
+  justify-content: right;
+  // padding: 0px 20px;
+  margin: 2px 20px;
+  word-wrap: break-word;
+}
+
+.rightMessage {
+  text-align: left;
+  width: 300px;
+  padding: 5px; 
+  font-size: 12px;
+  border-radius: 50px;
+  background-color: #f6b93b;
+}
