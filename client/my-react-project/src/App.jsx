@@ -10,7 +10,7 @@ import Games from './pages/Games/games'
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
 import SpecficChat from "./pages/Chat/SpecficChat";
-import SpecficChat from "./pages/Chat/SpecficChat";
+
 function App() {
   return (
     <Router>
@@ -26,7 +26,6 @@ function App() {
         <Route path="/profileFollowers" element={<ProfileFollowers/>}/>
        
        
-        <Route paht="/chat/:id" element={<SpecficChat/>} />
         <Route path="/chat/:id" element={<SpecficChat/>} />
         </Routes>
       </div>
