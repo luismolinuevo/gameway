@@ -13,7 +13,7 @@ datasource db {
 
 model User {
   id       Int        @id@unique @default(autoincrement())
-  username String     @db.VarChar(255)
+  username String     @db.VarChar(16)
   password String     @db.VarChar(255)
   post     Post[]
   follower Follower[]
@@ -75,11 +75,4 @@ model Message {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@index([chatId])
   @@index([userId])
-}
-
-model Session {
-  id        String   @id
-  sid       String   @unique
-  data      String
-  expiresAt   DateTime
 }

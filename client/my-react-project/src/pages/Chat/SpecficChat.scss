@@ -1,0 +1,107 @@
+.chatroom {
+  // overflow-x: hidden;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background-color: #383838;
+  // min-height: 100vh;
+  width: 100%; /* Add this line */
+  flex-wrap: wrap;
+}
+
+.chatbox-container {
+  position: relative;
+  background-color: #4b4b4b;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1.8rem;
+  box-shadow: 0px 5px 20px 1px;
+  width: 520px;
+  height: 650px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.message-container {
+  height: 80%;
+  overflow-y: scroll;
+  scrollbar-color: #f6b93b #111111;
+}
+
+.message-container::-webkit-scrollbar {
+    z-index: -2;
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .message-container::-webkit-scrollbar-track {
+    z-index: -2;
+    background-color: #111111; /* Set the background color of the scrollbar track */
+  }
+  
+  .message-container::-webkit-scrollbar-thumb {
+    z-index: -2;
+    background-color: #f6b93b; /* Set the background color of the scrollbar thumb */
+    border-radius: 10px; /* Set the border radius of the scrollbar thumb */
+  }
+  
+  .message-container::-webkit-scrollbar-thumb:hover {
+    z-index: -1;
+    background-color: #f6c289; /* Set the background color of the scrollbar thumb on hover */
+  }
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input {
+  border: 1px solid #f6b93b;
+  border-radius: 50px;
+  font-size: 18px;
+  width: 400px;
+  height: 32px;
+  outline: none;
+}
+
+.rightMessage-Container {
+  display: flex;
+  justify-content: right;
+  // padding: 0px 20px;
+  margin: 2px 20px;
+<<<<<<< HEAD
+  padding: 3px;
+=======
+>>>>>>> 2afa91e3bde68bf5e2f8ad7f392a59dc3d7f0d7f
+  word-wrap: break-word;
+}
+
+.leftMessage-Container {
+  display: flex;
+  justify-content: left;
+  // padding: 0px 20px;
+<<<<<<< HEAD
+  padding: 3px;
+=======
+>>>>>>> 2afa91e3bde68bf5e2f8ad7f392a59dc3d7f0d7f
+  margin: 2px 20px;
+  word-wrap: break-word;
+}
+
+.message {
+  text-align: left;
+  width: 300px;
+  padding: 5px; 
+<<<<<<< HEAD
+  font-size: 15px;
+  border-radius: 25px;
+=======
+  font-size: 12px;
+  border-radius: 50px;
+>>>>>>> 2afa91e3bde68bf5e2f8ad7f392a59dc3d7f0d7f
+  background-color: #f6b93b;
+}
+
+
+
