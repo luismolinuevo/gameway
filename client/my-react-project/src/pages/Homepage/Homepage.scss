@@ -101,7 +101,8 @@
       max-height: 100vh;
       height: auto;
       filter:contrast(120%);
-    
+      animation: neon .08s ease-in-out infinite alternate;
+      
     }
     
     .home-buttons-container {

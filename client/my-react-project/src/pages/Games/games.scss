@@ -2,8 +2,8 @@ $user-bg: #4A4A4A;
 $header-bg: #111111;
 
 @font-face {
-  font-family: 'hermes';
-  src: url("../../fonts/hermes.otf") format("truetype");
+  font-family: ggsans, "hermes";
+  src: url("../../fonts/ggsans-Normal.ttf"), url("../../fonts/hermes.otf");
 }
 
 body {
@@ -35,11 +35,18 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100vh;
     .left-container{
+      position: fixed;
+      top: 5;
+      left: 0;
       flex: 1;
+     
     .games {
-      padding-top: 6rem;
+     margin-left: 10vh;
+      margin-bottom: 25vh;
       .game-container {
+        position:sticky;
         padding: 5vh 10vh 5vh 10vh;
         box-shadow: 0px 5px 20px 1px;
         border-radius: 2vh;
@@ -65,12 +72,19 @@ body {
           transform: translateY(-7px);
         }
         }
-
+        .game-details{ 
         h1 {
           color: yellow;
-          margin: 0 auto;
+          margin-left: 3vh;
           margin-top: 8vh;
+         
         }
+        p{
+          font-family: ggsans;
+          margin-left: 3vh;
+          color:rgb(168, 166, 166);
+        }
+      }
       }
     }
   }
@@ -78,7 +92,7 @@ body {
   .right-container{
     padding-top: 6rem;
     flex: 1;
-
+    margin-left: 100vh;
     button{
       width: 60rem;
       height: 10rem;
@@ -104,7 +118,7 @@ body {
       border-radius: 15px;
       height: 20rem;
       width: 20rem;
-      background-color: #636363;
+      background-color: #555555;
     }
   }
 }

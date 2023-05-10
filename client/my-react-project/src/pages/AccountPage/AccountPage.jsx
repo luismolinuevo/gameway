@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AccountPage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from 'react-icons/fa';
-
+import { useParams, Link } from "react-router-dom";
 function Account() {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("mypassword");
@@ -22,15 +22,20 @@ function Account() {
     <div className="account">
       <Navbar />
       <div className="account-info-container">
+        
         <div className="account-info-left">
+          
           <div className="user-icon">
+            
             <div className="user-container">
               <FaUserAstronaut
                 style={{ color: 'yellow' }}
                 size={180}
               />
             </div>
+
           </div>
+
           <p className="user-name">Tom</p>
           <div className="account-buttons-container">
             <button
@@ -47,6 +52,11 @@ function Account() {
             </button>
           </div>
         </div>
+
+        <Link to={`/profileFollowers/:id`} style={{ textDecoration: 'none' }}>
+        <button className="account-follow-button">Followers:</button>
+        <button className="account-follow-button">Following:</button>
+        </Link>
         <div className="divider"></div>
         <div className="account-info-right">
           {displayAccountInfo ? (
@@ -62,14 +72,15 @@ function Account() {
             </>
           ) : (
             <div className="account-info-row">
-              <p className="account-info-label-password">Password:</p>
-              <div className="password-container">
-                <input
+              <p className="account-info-label-password">Password:
+              <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   readOnly
                   className="account-info-password"
-                />
+                /></p>
+              <div className="password-container">
+                
                 <button
                   className="password-toggle"
                   onClick={handleShowPassword}

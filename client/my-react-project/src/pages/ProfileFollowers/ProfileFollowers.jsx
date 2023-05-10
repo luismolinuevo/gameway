@@ -71,12 +71,15 @@ export default function ProfileFollowers() {
                           Test:{userInfo.username} {showFollowersList ? "Followers" : "Following"}
                         </p>
                         <div>
+                               {/* //Followers button will spawn the followers list */}
+
                           <button
                             className={`follow-button ${showFollowersList ? "selected" : ""}`}
                             onClick={handleFollowersClick}
                           >
                             Followers <BsFillPeopleFill className="follower-icons" />
                           </button>
+                            {/* //Following button will spawn the following list */}
                           <button
                             className={`follow-button ${!showFollowersList ? "selected" : ""}`}
                             onClick={handleFollowingClick}
@@ -93,28 +96,44 @@ export default function ProfileFollowers() {
                   {showFollowersList ? (
                     
                     <ul className="followers-list">
+                      {/* followers if clicked will direct you to their page*/}
                       {mockFollowers.map((follower) => (
+                        
+                      <Link to={`/profile/${follower.id}`} style={{ textDecoration: 'none' }}>
                         <li className="follower-item" key={follower.id}>
+
                           <div className="icon">
                             {/* followers-icon */}
-                          <FaUserAstronaut style={{ color: "yellow" }} size={80} />
+                          <FaUserAstronaut 
+                          style={{ color: "yellow" }} 
+                          size={80} 
+                          />
                           </div>
-                          <Link to={`/profile/${follower.id}`}>{follower.username}</Link>
+
+                          <a>{follower.username}</a>
+        
                         </li>
+                        </Link>
                       ))}
                     </ul>
                   ) : (
+
                     <ul className="following-list">
+                       {/* following if clicked will direct you to their page*/}
                       {mockFollowing.map((following) => (
+                      <Link to={`/profile/${following.id}` } style={{ textDecoration: 'none' }}>
                         <li className="follower-item" key={following.id}>
                           {/* following icon */}
+
                           <div className="icon">
                             <FaUserAstronaut 
                             style={{ color: "yellow",}}                     
                             size={80} />
                           </div> 
-                          <Link to={`/profile/${following.id}`}>{following.username}</Link>
+
+                          <a>{following.username}</a>
                         </li>
+                        </Link>
                       ))}
                     </ul>
                   )}

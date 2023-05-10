@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    overflow-y: scroll;
+    scrollbar-color: #f6b93b #111111;
+    gap: 2rem; /* Set the gap between the edge of the screen and the scrollbar */
+    z-index: -2;
+    &::-webkit-scrollbar {
+      width: 15px; /* Set the width of the scrollbar */
+      
+    }
+  
+    &::-webkit-scrollbar-track {
+      border: solid 3px transparent;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0px 0px 15vh 15vh rgb(187, 255, 0);
+      border: solid 3px transparent;
+      border-radius: 2rem ;
+     
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #bef689; /* Set the background color of the scrollbar thumb on hover */
+    }
+  }
+  

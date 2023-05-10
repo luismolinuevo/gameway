@@ -1,11 +1,84 @@
 
+//BACKGROUND IMG
+body {
+  position: relative;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0 ,#424242;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  animation: bg-scrolling-reverse 0.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+body::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.858);
+}
+
+
+//animation for background everything with keyframes
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+//BACKGROUND IMG
+
+
 
 .follow {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #383838;
+  background-color: #23232300;
   min-height: 100vh;
   width: 100%; /* Add this line */
   flex-wrap: wrap;
@@ -50,9 +123,9 @@
   
   width: 100%;
   margin-right: 20vh;
-  margin-top: 20vh;
+  margin-top: 6vh;
   padding: 50px;
-  height: 200px; /* set a fixed height for the element */
+  height: 25rem; /* set a fixed height for the element */
   overflow-y: scroll; /* add a vertical scrollbar when content exceeds height */
   border-radius: 2rem;
   box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.432);
@@ -91,11 +164,24 @@
       height: 100px;
       box-shadow: 0px .2rem 5rem rgba(0, 0, 0, 0.432);
       margin-right: 4rem;
+      transition: all 0.3s ease 0s;
+
+      &:hover{
+        height: 200px;
+        width: 200px;
+      }
     }
 
-    span {
-     
-      font-weight: bold;
+    a{
+     font-weight: bold;
+     color:aliceblue;
+      font-size: xx-large;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+    &:hover{
+      color:rgb(215, 249, 0);
+      font-size: 3rem;
+    }
     }
   }
 }

@@ -63,16 +63,19 @@ function UserHome() {
         <span className="shiny">
         <span className="inner-shiny">Trending Games</span>
         </span>
+
         <div className="games">
           {games.map((game) => (
              <Link key={game.id} to={`/games?name=${game.name}`}style={linkStyle}>
             <div key={game.id}>
-            <img  src={game.box_art_url.replace("{width}", "300").replace("{height}", "400")} alt={game.name}></img>
+            <img src={`${game.box_art_url.replace("{width}", "300").replace("{height}", "400")}?${Math.random()}`} alt={game.name} />
             <p className="game-name">{game.name}</p>
             </div>
             </Link>
           ))}
         </div>
+
+        
       </div>
     </div>
   );
