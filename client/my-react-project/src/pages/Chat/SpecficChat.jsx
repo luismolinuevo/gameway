@@ -39,9 +39,6 @@ export default function SpecficChat() {
     // });
     socket.on("newMessageCreated", () => {
       fetchMessages();
-      // setMessages(newMessages);
-      console.log("hey")
-      // setMessages((prevMessages) => [...prevMessages, newMessages]);
       scrollToBottom();
     });
 
@@ -66,7 +63,7 @@ export default function SpecficChat() {
       const { success, getChat } = response.data;
 
       if (success) {
-        console.log(getChat.messages);
+        // console.log(getChat.messages);
         setMessages(getChat.messages);
         // setMessages((messages) => [...messages, ...getChat.messages]);
       }
@@ -107,7 +104,7 @@ export default function SpecficChat() {
           {messages.length != 0 ? (
             messages.map((items) => (
               <div className={`${items.userId === user? "rightMessage-Container" : "leftMessage-Container"}`} key={items.id} >
-                <p className="message">{items.content}</p>
+                <p className="message" key={items.id}>{items.content}</p>
               </div>
             ))
           ) : (
