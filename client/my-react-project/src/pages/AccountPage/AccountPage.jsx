@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from 'react-icons/fa';
 import { useParams, Link } from "react-router-dom";
 function Account() {
+  const userName="Tom";
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("mypassword");
   const [displayAccountInfo, setDisplayAccountInfo] = useState(true);
@@ -36,7 +37,7 @@ function Account() {
 
           </div>
 
-          <p className="user-name">Tom</p>
+          <p className="user-name">{userName}</p>
           <div className="account-buttons-container">
             <button
               className={`account-button ${displayAccountInfo ? 'active' : ''}`}
@@ -53,7 +54,7 @@ function Account() {
           </div>
         </div>
 
-        <Link to={`/profileFollowers/:id`} style={{ textDecoration: 'none' }}>
+        <Link to={`/profileFollowers/?id=${userName}`} style={{ textDecoration: 'none' }}>
         <button className="account-follow-button">Followers:</button>
         <button className="account-follow-button">Following:</button>
         </Link>

@@ -4,10 +4,10 @@ import "./UserHome.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 function UserHome() {
   const [games, setGames] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     //the POST request to obtain the access token
     const requestBody = {
@@ -40,13 +40,16 @@ function UserHome() {
             game.name === "Fortnite" ||  
             game.name === "VALORANT");
             setGames(filteredGames);
+            setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
+          setIsLoading(false);
         });
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -63,7 +66,10 @@ function UserHome() {
         <span className="shiny">
         <span className="inner-shiny">Trending Games</span>
         </span>
-
+        
+        {isLoading ? (
+          <LoadingScreen />
+        ) : (
         <div className="games">
           {games.map((game) => (
              <Link key={game.id} to={`/games?name=${game.name}`}style={linkStyle}>
@@ -75,7 +81,7 @@ function UserHome() {
           ))}
         </div>
 
-        
+        )}
       </div>
     </div>
   );

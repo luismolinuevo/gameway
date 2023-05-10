@@ -1,0 +1,16 @@
+
+.loading-screen{
+    display:flex;
+    margin: 0 auto;
+    height: 100vh;
+    flex-direction: column;
+    img{
+     height: 20rem;
+    width: 20rem;   
+    }
+    p{
+        text-align: center;
+        color: yellow;
+        font-size: 10rem;
+    }
+}

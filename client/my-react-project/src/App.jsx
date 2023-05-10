@@ -21,7 +21,7 @@ function App() {
         <Route path="/account" element={<Account/>}/>
         <Route path="/games" element={<Games />} />
         <Route path="/profile/:id" element={<ProfilePage/>}/>
-        <Route path="profileFollowers/:id" element={<ProfileFollowers/>}/>
+        <Route path="/profileFollowers" element={<ProfileFollowers/>}/>
         </Routes>
       </div>
     </Router>

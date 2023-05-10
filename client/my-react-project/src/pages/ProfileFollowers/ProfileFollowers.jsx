@@ -3,11 +3,13 @@ import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from "react-icons/fa";
 import "./ProfileFollowers.scss";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { BsFillPeopleFill } from "react-icons/bs";
 
 export default function ProfileFollowers() {
-  const params = useParams();
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const userName = params.get("id");
   const [userInfo, setUserInfo] = useState([]);
   const [userPost, setUserPost] = useState([]);
   const [seePost, setSeePost] = useState(false);
@@ -68,7 +70,7 @@ export default function ProfileFollowers() {
                     <div className="follow-actions">
                       <div>
                         <p className="follow-user-name">
-                          Test:{userInfo.username} {showFollowersList ? "Followers" : "Following"}
+                          Test:{userName} {showFollowersList ? "Followers" : "Following"}
                         </p>
                         <div>
                                {/* //Followers button will spawn the followers list */}
