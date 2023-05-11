@@ -92,8 +92,10 @@ function Games() {
     
     <div className="right-container">
       <button>Create Post</button>
-      <div className="post">HI</div>
+      <button>View Post</button>
     </div>
+
+    
     </div>
     </div>
   );
