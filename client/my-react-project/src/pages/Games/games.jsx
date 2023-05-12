@@ -3,6 +3,7 @@ import "./games.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Games() {
   const { search } = useLocation();
@@ -91,7 +92,9 @@ function Games() {
 
     
     <div className="right-container">
-      <button>Create Post</button>
+      <Link to={`/createPost?name=${gameName}`}>
+          <button>Create Post</button>
+      </Link>
       <button>View Post</button>
     </div>
 

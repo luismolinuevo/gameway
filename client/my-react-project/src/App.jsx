@@ -10,6 +10,7 @@ import Games from './pages/Games/games'
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
 import SpecficChat from "./pages/Chat/SpecficChat";
+import CreatePost from "./pages/Posts/CreatePost"
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/games" element={<Games />} />
         <Route path="/profile/:id" element={<ProfilePage/>}/>
         <Route path="/profileFollowers" element={<ProfileFollowers/>}/>
-       
+        <Route path="/createPost" element={<CreatePost/>}/>
        
         <Route path="/chat/:id" element={<SpecficChat/>} />
         </Routes>
