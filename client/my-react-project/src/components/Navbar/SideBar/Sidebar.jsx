@@ -48,9 +48,11 @@ function SideBar(){
                         <span className='links-name'>Posts</span>
                     </li>
                     <li className="sidebar--contents">
+                        <Link className="sidebar--link" to="/chatPage">
                         {/*The chat room page also needs to be made for me to link it*/}
                         <FaTerminal size={30}/>
                         <span className='links-name'>Chat</span>
+                        </Link>
                     </li>
                     <li className="sidebar--contents">
                         <Link className="sidebar--link" to="/account">

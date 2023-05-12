@@ -4,8 +4,8 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { checkLoginStatus } from "../../redux/auth";
-import Navbar from "../../components/Navbar/Navbar";
+import { checkLoginStatus } from "../../../redux/auth";
+import Navbar from "../../../components/Navbar/Navbar";
 
 const socket = io(":8080", {
   reconnectionDelay: 1000,
@@ -95,9 +95,11 @@ export default function SpecficChat() {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
+  return ( 
+  <div>
+  <Navbar />
     <div className="chatroom">
-      <Navbar />
+     
       <div className="chatbox-container">
         <p>Other persons username</p>
         <div className="message-container">
@@ -123,6 +125,7 @@ export default function SpecficChat() {
           {/* <button onClick={sendMessage}>Send</button> */}
         </div>
       </div>
+    </div>
     </div>
   );
 }

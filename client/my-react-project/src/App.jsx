@@ -9,10 +9,10 @@ import Account from './pages/AccountPage/AccountPage'
 import Games from './pages/Games/games'
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
-import SpecficChat from "./pages/Chat/SpecficChat";
+import SpecficChat from "./pages/Chat/SpecificChat/SpecficChat";
 import CreatePost from "./pages/Posts/CreatePost";
 import Posts from "./pages/Posts/Posts";
-
+import ChatPage from "./pages/Chat/ChatPage"
 function App() {
   return (
     <Router>
@@ -29,6 +29,7 @@ function App() {
         <Route path="/createPost" element={<CreatePost/>}/>
         <Route path="/viewPost" element={<Posts/>}/>
         <Route path="/chat/:id" element={<SpecficChat/>} />
+        <Route path="/chatPage" element={<ChatPage/>}/>
         </Routes>
       </div>
     </Router>

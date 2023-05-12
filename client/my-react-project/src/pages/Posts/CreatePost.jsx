@@ -43,7 +43,7 @@ export default function CreatePost(){
   return(
     <div className="div createPost">
         <Navbar/>
-        <form >
+        <form className="form-container" >
             
             <div className="form--title">
                 <label htmlFor="title" className="title">Post Title</label>
