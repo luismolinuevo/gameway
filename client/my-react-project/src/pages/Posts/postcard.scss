@@ -1,13 +1,13 @@
 .card--list{
-    margin:1vh;
+    margin:0;
     height: 25vh;
     width: 85vh;
     background-color: black;
     border-radius: 5px;
     border-style: solid;
-    border-color: yellow;
+    border-color: white;
     margin-bottom: 3vh;
-    padding: 10px;
+    
 }
 
 .card--title{
@@ -15,13 +15,10 @@
     display: flex;
     justify-content: space-between;
     margin-right: 2vh;
-    border-bottom: 1px solid yellow;
 }
 
 li {
-    color: yellow;
+    color: white;
     list-style-type: none;
-    // margin-bottom: 1.5vh;
-    
-
+    margin-bottom: 1vh;
 }
