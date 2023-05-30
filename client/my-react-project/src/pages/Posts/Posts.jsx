@@ -16,7 +16,8 @@ export default function Posts(){
             try {
                 const response = await axios.get('http://localhost:8080/post')
                 console.log(response);
-                const gameFilter = response.data.allPost.filter(x => x.game === gameName);
+                let gameFilter = response.data.allPost.filter(x => x.game === gameName);
+                gameFilter = gameFilter.reverse();
                 setPosts(gameFilter.map(prevPosts => <PostCard key={prevPosts.id} {...prevPosts} />));
             } catch (error) {
                 console.log(error);
@@ -28,7 +29,10 @@ export default function Posts(){
     return (
         <div>
             <Navbar />
-            {posts}
+            <div className="post--list">
+
+                {posts}
+            </div>
             
         </div>
     );

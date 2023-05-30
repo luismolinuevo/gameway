@@ -1,24 +1,35 @@
 .card--list{
-    margin:0;
+    padding: 0;
     height: 25vh;
-    width: 85vh;
+    width: 65vh;
     background-color: black;
     border-radius: 5px;
     border-style: solid;
-    border-color: white;
-    margin-bottom: 3vh;
-    
+    border-color: yellow;
+    margin: 3vh;
+    align-items: center;
 }
 
 .card--title{
     margin-top: 1vh;
     display: flex;
     justify-content: space-between;
-    margin-right: 2vh;
+    border-bottom: 1px solid;
+    border-color: yellow;
+}
+
+.card--body{
+    margin-top: 1vh;
+}
+
+.link{
+    text-decoration: none;
 }
 
 li {
-    color: white;
+    margin-right: 2vh;
+    margin-left: 2vh;
+    color: yellow;
     list-style-type: none;
     margin-bottom: 1vh;
 }
