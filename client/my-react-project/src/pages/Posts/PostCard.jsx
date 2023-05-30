@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import './postcard.scss'
 
 export default function PostCard(props){
     const [userName, setUserName] = useState("");
@@ -24,12 +25,14 @@ export default function PostCard(props){
     return(
         <div className="div postCard">
             <ul className="card--list">
-                <li>
-                    {userName}
-                </li>
-                <li>
-                    {props.title}
-                </li>
+                <div className="card--title">
+                    <li>
+                        {userName}
+                    </li>
+                    <li>
+                        {props.title}
+                    </li>
+                </div>
                 <li>
                     {props.game}
                 </li>
