@@ -5,8 +5,6 @@ import "./RegisterPage.scss";
 function Register() {
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Need to change the handleClick function to do the proper api call in order to create the user 
-  //Sends an alert if valid or not and we redirect the user to login page
   const handleClick = () => {
     setIsAnimating(true);
     setTimeout(() => {

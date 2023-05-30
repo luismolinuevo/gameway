@@ -28,9 +28,7 @@ export default function Posts(){
     return (
         <div>
             <Navbar />
-            <div className="post--list">
-                {posts}
-            </div>
+            {posts}
             
         </div>
     );
