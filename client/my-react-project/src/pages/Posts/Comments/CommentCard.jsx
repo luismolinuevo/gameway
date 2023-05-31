@@ -1,10 +1,10 @@
 import React from "react";
-import '../Comments/commentpostcard.scss';
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import '../Comments/commentpostcard.scss';
 
-export default function CommentCard(){
+export default function CommentCard(props){
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [userName, setUserName] = useState("");
@@ -13,19 +13,26 @@ export default function CommentCard(){
 
     useEffect(() =>{
         async function getUsername(){
-            //console.log(id);
             const token = localStorage.getItem("token");
-            const response = await axios.get('http://localhost:8080/post/' + id);
-            const username = await axios.get('http://localhost:8080/auth/user/' + response.data.userPost[0].userId)
-            setGame(response.data.userPost[0].game);
-            setBody(response.data.userPost[0].body);
-            setTitle(response.data.userPost[0].title);
+            const response = await axios.get('http://localhost:8080/comment/' + id, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                  }
+            });
+            const post = await axios.get('http://localhost:8080/post/' + id);
+            const username = await axios.get('http://localhost:8080/auth/user/' + post.data.userPost[0].userId)
+            
+            setGame(post.data.userPost[0].game);
+            setBody(response.data.commentForPost[0].text);
             setUserName(username.data.username)
+            console.log(response);
+            // console.log(username)
+            console.log(body)
         }
         getUsername();
     }, []);
 
-    return (
+    return(
         <div className="postComment--main">
                 <ul className="postComment--list">
                     <div className="postComment--title">
@@ -37,9 +44,6 @@ export default function CommentCard(){
                         </li>
                     </div>
                     <div className="postComment--body">
-                        <li >
-                            Title: {title}
-                        </li>
                         <li>
                             {body}
                         </li>

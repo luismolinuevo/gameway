@@ -1,0 +1,41 @@
+.postComment--main{
+    border-radius: 5px;
+    border-style: solid;
+    border-color: brown;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: fit-content;
+}
+
+.postComment--list{
+    height: 50vh;
+    width: 100vh;
+    background-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: yellow;
+    //margin: 3vh;
+    align-items: center;
+    font-size:x-large;
+}
+
+.postComment--title{
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+    border-color: yellow;
+}
+
+.postComment--body{
+    margin-top: 1vh;
+}
+
+li {
+    margin-right: 2vh;
+    margin-left: 2vh;
+    color: yellow;
+    list-style-type: none;
+    margin-bottom: 1vh;
+}

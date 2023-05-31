@@ -2,6 +2,8 @@ import React from "react";
 import './comments.scss';
 import Navbar from '../../../components/Navbar/Navbar'
 import CommentPostCard from "./CommentPostCard";
+import CommentCard from "./CommentCard"
+import CreateComment from "./CreateComment"
 
 /*
     The layout of this page would be similar to that of a blog post
@@ -21,6 +23,8 @@ export default function Comments(){
         <div className="comments--main">
             <Navbar />
             <CommentPostCard />
+            <CreateComment />
+            <CommentCard />
         </div>
         
     );
