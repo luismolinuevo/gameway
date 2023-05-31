@@ -39,7 +39,7 @@ function Account() {
       <div className="chat-container">
         {chats && chats.length != 0 ? chats.map((items) => (
           <ul className="chat-list" key={items.id}>
-            <Link to={"/chat/${item.id}"} style={linkStyle}>
+            <Link to={`/chat/${items.id}`} style={linkStyle}>
               <li className="chat-list-item">
                 <FaUserAstronaut /> {items.otherUsername}
               </li>
