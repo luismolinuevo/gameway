@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import "./postcard.scss"
 export default function PostCard(props){
     const [userName, setUserName] = useState("");
 

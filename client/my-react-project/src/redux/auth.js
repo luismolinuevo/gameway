@@ -8,7 +8,9 @@ export const slice = createSlice({
     isLoggedIn: false,
     isLoading: false,
     error: null,
-    loginId: null
+    loginId: null,
+    username: null,
+    password: null
   },
   reducers: {
         loginSuccess: (state, action) => {
@@ -22,10 +24,15 @@ export const slice = createSlice({
         setUserInfo: (state, action) => {
             state.loginId = action.payload;
         },
+        setUsername: (state, action) => {
+          state.username = action.payload;
+        },
+        setPassword: (state, action) => {
+          state.password = action.payload;
+        },
   },
 });
 
-export const { loginSuccess, error, setUserInfo } = slice.actions;
 
 // Thunk action to log in a user
 export const loginUser = (username, password) => async (dispatch) => {
@@ -55,10 +62,14 @@ export const checkLoginStatus = () => async dispatch => {
           }
         );
     dispatch(setUserInfo(getUser.data.data.id));
-    console.log(getUser.data.data.id)
+    dispatch(setUsername(getUser.data.data.username));
+    dispatch(setPassword(getUser.data.data.password));
+    console.log(getUser.data.data)
   } catch (error) {
     console.log("error fetching user")
   }
 };
+
+export const { loginSuccess, error, setUserInfo, setUsername, setPassword } = slice.actions;
 
 export default slice.reducer;

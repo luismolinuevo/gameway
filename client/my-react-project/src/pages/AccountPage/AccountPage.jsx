@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./AccountPage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from 'react-icons/fa';
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { checkLoginStatus } from "../../redux/auth";
+
 function Account() {
-  const userName="Tom";
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("mypassword");
+ 
   const [displayAccountInfo, setDisplayAccountInfo] = useState(true);
+
+  const username = useSelector((state) => state.auth.username);
+ const password = useSelector((state) => state.auth.password);
+
+  useEffect(() => {
+    dispatch(checkLoginStatus())
+
+  }, [])
+
+  console.log(username)
+  console.log(password)
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -37,7 +51,7 @@ function Account() {
 
           </div>
 
-          <p className="user-name">{userName}</p>
+          <p className="user-name">{username}</p>
           <div className="account-buttons-container">
             <button
               className={`account-button ${displayAccountInfo ? 'active' : ''}`}
@@ -54,7 +68,7 @@ function Account() {
           </div>
         </div>
 
-        <Link to={`/profileFollowers/?id=${userName}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/profileFollowers/?id=${username}`} style={{ textDecoration: 'none' }}>
         <button className="account-follow-button">Followers:</button>
         <button className="account-follow-button">Following:</button>
         </Link>
@@ -64,7 +78,7 @@ function Account() {
             <>
               <div className="account-info-row">
                 <p className="account-info-label">Username:</p>
-                <p className="account-info-value">tomthegreat101</p>
+                <p className="account-info-value">{username}</p>
               </div>
               <div className="account-info-row">
                 <p className="account-info-label">Email:</p>

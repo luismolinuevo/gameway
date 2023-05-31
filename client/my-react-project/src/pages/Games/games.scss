@@ -95,20 +95,21 @@ body {
     padding-top: 6rem;
     flex: 1;
     margin-left: 100vh;
+    margin-bottom: 10rem;
     button{
       max-width: 100%;
-      width: 60rem;
+      width: 40rem;
       height: 10rem;
       margin-bottom: 5rem;
       border-radius: 2rem;
       background-color: #eeff00;
       font-size: 5.5rem;
-      cursor: pointer;
       border-style: none;
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
       transition: all 1.3s ease 0s;
       cursor: pointer;
       outline: none;
+      
       &:hover {
         background-color: #303030;
         box-shadow: 0px .2rem .5rem rgba(217, 255, 0, 0.4);
