@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 .form-container{
     display:flex;
     flex-direction: column;
+=======
+
+form{
+
+.form-container{
+    display:flex;
+    flex-direction: column;
+
+>>>>>>> 2fc8c572faa5de80513d0e7a30cbd9d5a6029f5b
     position: fixed;
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.897);
     
 }
-
+}
 .form--title{
     margin:0 auto;
     text-align: center;

@@ -3,24 +3,33 @@ import "./posts.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import PostCard from "./PostCard";
 
-function Posts(){
+export default function Posts(){
     const { search } = useLocation();
     const params = new URLSearchParams(search);
     const gameName = params.get("name");
-    const [imageUrl, setImageUrl] = useState("");
-    const [gameTitle, setGameTitle] = useState("");
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() =>{
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/post')
+                console.log(response);
+                const gameFilter = response.data.allPost.filter(x => x.game === gameName);
+                setPosts(gameFilter.map(prevPosts => <PostCard key={prevPosts.id} {...prevPosts} />));
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchData();
+    }, [gameName]);
 
     return (
-<<<<<<< Updated upstream
-        <div>Start here</div>
-=======
         <div>
             <Navbar />
-           
             {posts}
             
         </div>
->>>>>>> Stashed changes
     );
 }
