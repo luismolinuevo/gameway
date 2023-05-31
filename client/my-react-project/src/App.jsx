@@ -11,7 +11,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
 import SpecficChat from "./pages/Chat/SpecficChat";
 import CreatePost from "./pages/Posts/CreatePost"
-
+import Posts from "./pages/Posts/Posts";
 function App() {
   return (
     <Router>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/profile/:id" element={<ProfilePage/>}/>
         <Route path="/profileFollowers" element={<ProfileFollowers/>}/>
         <Route path="/createPost" element={<CreatePost/>}/>
-       
+        <Route path="/viewPost" element={<Posts/>}/>
         <Route path="/chat/:id" element={<SpecficChat/>} />
         </Routes>
       </div>
