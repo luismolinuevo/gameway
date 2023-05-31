@@ -1,37 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ChatPage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import { FaUserAstronaut } from 'react-icons/fa';
+import { FaUserAstronaut } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { checkLoginStatus } from "../../redux/auth";
+import axios from "axios";
+
 function Account() {
-    const [mockChatters, setMockChatters] = useState([
-        { id: 1, username: "Mock User ", img: <FaUserAstronaut/>},
-        { id: 2, username: "Mock User 2", img: <FaUserAstronaut/> },
-        { id: 3, username: "Mock User 3", img: <FaUserAstronaut/> },
-        { id: 4, username: "Mock User 4", img: <FaUserAstronaut/> },
-      ]);
-      const linkStyle = {
-        textDecoration: "none"
-      };
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.auth.username);
+
+  const [chats, setChats] = useState([]);
+  useEffect(() => {
+    dispatch(checkLoginStatus())
+    const fetchChats = async () => {
+      const token = localStorage.getItem("token");
+      const fetch = await axios.get(`http://localhost:8080/chat/userchats`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        },
+      });
+      console.log(fetch.data.chatrooms);
+      setChats(fetch.data.chatrooms);
+    };
+
+    fetchChats();
+  }, []);
+
+  const linkStyle = {
+    textDecoration: "none"
+  };
 
   return (
     <div className="account">
       <Navbar />
       <h1 className="chat-page-title">Chats</h1>
       <div className="chat-container">
-        
-        {mockChatters.map((chatters) =>(
-        
-        <ul className="chat-list">
-        <Link to="/chat/:id" style={linkStyle}>
-            <li className="chat-list-item">
-              {chatters.img} {chatters.username}
+        {chats && chats.length != 0 ? chats.map((items) => (
+          <ul className="chat-list" key={items.id}>
+            <Link to={"/chat/${item.id}"} style={linkStyle}>
+              <li className="chat-list-item">
+                <FaUserAstronaut /> {items.otherUsername}
               </li>
-        </Link>
-        </ul>
-        ))}
+            </Link>
+          </ul>
+        )) : <p></p>}
       </div>
-     
     </div>
   );
 }

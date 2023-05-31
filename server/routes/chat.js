@@ -1,5 +1,6 @@
 import express from "express";
 import prisma from "../db/index.js";
+import passport from "passport";
 
 // export default function createChatRouter() {
     const router = express.Router();
@@ -37,33 +38,87 @@ import prisma from "../db/index.js";
     });
 
     //get all chats for a user
-    router.get("/userchats", async (req, res) => {
+    // router.get("/userchats", passport.authenticate("jwt", { session: false, }), async (req, res) => {
 
+    //     try {
+    //         const chatroom = await prisma.chatroom.findMany({
+    //             where: {
+    //                 users: {  //was users
+    //                     some: {
+    //                         id: parseInt(req.user.id)
+    //                     },
+    //                 },
+    //             },
+    //             // include: {users: true}
+    //             include: {
+    //                 users: {
+    //                     select: {
+    //                         id: true,
+    //                         username: true
+    //                     },
+    //                     where: {
+    //                         id: {
+    //                             not: parseInt(req.user.id)
+    //                         }
+    //                     }
+    //                 }
+    //             }
+
+
+    //         });
+
+    //         res.status(200).json({
+    //             chatroom
+    //         })
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.status(500).json({ error: "Server Error" })
+    //     }
+    // });
+    router.get("/userchats", passport.authenticate("jwt", { session: false }), async (req, res) => {
         try {
-            const chatroom = await prisma.chatroom.findMany({
+            const chatrooms = await prisma.chatroom.findMany({
                 where: {
-                    user: {  //was users
+                    users: {
                         some: {
-                            id: parseInt(req.user.id)
+                            id: parseInt(req.user.id),
                         },
                     },
                 },
                 include: {
-                    messages: {
-                        orderBy: {
-                            createdAt: "asc",
+                    users: {
+                        where: {
+                            id: {
+                                not: parseInt(req.user.id),
+                            },
+                        },
+                        select: {
+                            username: true,
                         },
                     },
                 },
-                users: true,
-
-
-            })
+            });
+    
+            const chatroomsWithOtherUsernames = chatrooms.map((chatroom) => {
+                const otherUser = chatroom.users[0];
+                return {
+                    id: chatroom.id,
+                    users: chatroom.users,
+                    otherUsername: otherUser ? otherUser.username : null,
+                };
+            });
+    
+            res.status(200).json({
+                chatrooms: chatroomsWithOtherUsernames,
+            });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: "Server Error" })
+            res.status(500).json({ error: "Server Error" });
         }
     });
+    
+    
+      
 
     //get chatroom by chatroom id
     router.get("/:chatroomId", async (req, res) => {
