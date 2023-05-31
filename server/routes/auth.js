@@ -8,8 +8,6 @@ dotenv.config()
 
 const router = express.Router();
 
-
-
 router.get("/user/:id", async (req, res) => {
   const userId = req.params.id;
 
