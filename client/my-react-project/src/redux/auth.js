@@ -8,7 +8,9 @@ export const slice = createSlice({
     isLoggedIn: false,
     isLoading: false,
     error: null,
-    loginId: null
+    loginId: null,
+    username: null
+
   },
   reducers: {
         loginSuccess: (state, action) => {
@@ -58,7 +60,8 @@ export const checkLoginStatus = () => async dispatch => {
           }
         );
     dispatch(setUserInfo(getUser.data.data.id));
-    console.log(getUser.data.data.id)
+    dispatch(setUsername(getUser.data.data.username));
+    console.log(getUser.data.data)
   } catch (error) {
     console.log("error fetching user")
   }

@@ -3,13 +3,23 @@ import "./AccountPage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { setUsername } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { checkLoginStatus } from "../../redux/auth";
 
-function Account({ username, setUsername }) {
+function Account() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("mypassword");
   const [displayAccountInfo, setDisplayAccountInfo] = useState(true);
+  const username = useSelector((state) => state.auth.username);
+  
+
+  useEffect(() => {
+    dispatch(checkLoginStatus())
+    
+  }, [])
+
+  console.log(username)
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -93,13 +103,14 @@ function Account({ username, setUsername }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    username: state.auth.username,
-  };
-};
-const mapDispatchToProps = {
-  setUsername,
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     username: state.auth.username,
+//   };
+// };
+// const mapDispatchToProps = {
+//   setUsername,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+// export default connect(mapStateToProps, mapDispatchToProps)(Account);
+export default Account;
