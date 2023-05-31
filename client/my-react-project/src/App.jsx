@@ -12,7 +12,7 @@ import SpecficChat from "./pages/Chat/SpecificChat/SpecficChat";
 import CreatePost from "./pages/Posts/CreatePost";
 import Posts from "./pages/Posts/Posts";
 import ChatPage from "./pages/Chat/ChatPage"
-import Comments from "./pages/Posts/Comments"
+import Comments from "./pages/Posts/Comments/Comments"
 function App() {
   return (
     <Router>
@@ -30,7 +30,7 @@ function App() {
         <Route path="/viewPost" element={<Posts/>}/>
         <Route path="/chat/:id" element={<SpecficChat/>} />
         <Route path="/chatPage" element={<ChatPage/>}/>
-        <Route path="/comments" element={<Comments/>}/>
+        <Route path="/comments/:id" element={<Comments/>}/>
         </Routes>
       </div>
     </Router>

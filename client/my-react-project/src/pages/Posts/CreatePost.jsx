@@ -5,8 +5,6 @@ import "./createpost.scss";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 
-
-
 export default function CreatePost(){
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -39,7 +37,7 @@ export default function CreatePost(){
     };
     
   }
-  
+
   return(
     <div className="div createPost">
         <Navbar/>

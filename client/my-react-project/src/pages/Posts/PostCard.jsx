@@ -19,11 +19,9 @@ export default function PostCard(props){
         getUsername();
     }, []);
 
-    
-
     return(
         <div className="div postCard">
-            <Link className="link"to="/comments">
+            <Link className="link"to={`/comments/` + props.id }>
                 <ul className="card--list">
                     <div className="card--title">
                         <li>

@@ -8,8 +8,6 @@ dotenv.config()
 
 const router = express.Router();
 
-
-
 router.get("/user/:id", async (req, res) => {
   const userId = req.params.id;
 
@@ -146,7 +144,7 @@ router.get(
   "/login",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    //console.log(req.user)
+    console.log(req.user)
     res.status(200).json({
       success: true,
       data: req.user,

@@ -1,6 +1,7 @@
 import React from "react";
 import './comments.scss';
-import Navbar from '../../components/Navbar/Navbar'
+import Navbar from '../../../components/Navbar/Navbar'
+import CommentPostCard from "./CommentPostCard";
 
 /*
     The layout of this page would be similar to that of a blog post
@@ -10,17 +11,16 @@ import Navbar from '../../components/Navbar/Navbar'
 */
 
 /*
-This is going to be to create the Post Card for the comments page
-It is basically going to be the same as the PostCard function minus the 
+    This is going to be to create the Post Card for the comments page
+    It is basically going to be the same as the PostCard function minus the 
 */
 
 export default function Comments(){
 
-
     return (
         <div className="comments--main">
             <Navbar />
-            <p>Hello World</p>
+            <CommentPostCard />
         </div>
         
     );
