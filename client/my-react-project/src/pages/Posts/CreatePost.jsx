@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 
 export default function CreatePost(){
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const { search } = useLocation();
@@ -34,6 +35,7 @@ export default function CreatePost(){
           'Authorization': `Bearer ${token}`
         }
       })
+      
     } catch(error) {
         console.log(error)
     };

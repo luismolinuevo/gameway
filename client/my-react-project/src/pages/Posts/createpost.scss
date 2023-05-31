@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 form{
+=======
+.form-container{
+    display:flex;
+    flex-direction: column;
+>>>>>>> Stashed changes
     position: fixed;
     height: 100%;
     width: 100%;
@@ -7,20 +13,25 @@ form{
 }
 
 .form--title{
+    margin:0 auto;
+    text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100px;
-    margin-bottom: 2.5rem;
-    margin-right: 50%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     padding-bottom: 1rem;
+    width: 50rem;
+
 }
 
 .form--body{
+   
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 50%;
+    margin: 0 auto;
     // margin: 2.5rem;
     // margin-left: 25%;
     // padding-bottom: 1rem;
@@ -32,15 +43,18 @@ form{
 .body--title{
     color:yellow;
     font-size: 50px;
-    // margin:0;
+    text-align: center;
 }
 
 .body--form{
-    border-color:bisque;
+    background-color: #585858;
+    border-color:rgb(194, 236, 7);
     border-style: solid;
     height: 75%;
     width: 100%;
-    font-size: larger;
+    font-size: 5rem;
+    padding: 2rem;
+    border-radius: 2rem;
 }
 
 .title{
@@ -50,6 +64,10 @@ form{
 
 .title--input{
     font-size: larger;
+    height:3rem;
+    border-radius: 2rem;
+    background-color: #585858;
+    border-color:rgb(194, 236, 7);
 }
 
 .submit{
@@ -58,13 +76,14 @@ form{
 }
 
 .submit--button{
+    margin-top: 2rem;
     padding: 35px 125px;
     justify-content: center;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
     border-radius: 1rem;
-    margin-bottom: 5rem;
+   
     background-color: white;
     font-size: larger;
 }

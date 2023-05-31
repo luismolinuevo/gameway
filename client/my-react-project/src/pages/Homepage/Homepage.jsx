@@ -11,8 +11,8 @@ const HomePage = () => {
           <div className="home-box">
             <div className="homepageImg-container">
             <img src={homepageImg} className="homepageImg"/>
-            <div class="logo-container">
-              <img class="logo" src={logo} alt="logo"/>
+            <div className="logo-container">
+              <img className="logo" src={logo} alt="logo"/>
             </div>
             </div>
             <div className="home-buttons-container">
@@ -22,9 +22,7 @@ const HomePage = () => {
             <Link to="/register" >
               <button>Register</button>
             </Link>
-            <Link to ="/userHome">
-              <button>test</button>
-            </Link>
+           
             </div>
           </div>
         </div>

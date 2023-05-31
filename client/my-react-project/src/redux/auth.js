@@ -22,10 +22,13 @@ export const slice = createSlice({
         setUserInfo: (state, action) => {
             state.loginId = action.payload;
         },
+        setUsername: (state, action) => {
+          state.username = action.payload;
+        },
   },
 });
 
-export const { loginSuccess, error, setUserInfo } = slice.actions;
+
 
 // Thunk action to log in a user
 export const loginUser = (username, password) => async (dispatch) => {
@@ -60,5 +63,7 @@ export const checkLoginStatus = () => async dispatch => {
     console.log("error fetching user")
   }
 };
+
+export const { loginSuccess, error, setUserInfo, setUsername } = slice.actions;
 
 export default slice.reducer;

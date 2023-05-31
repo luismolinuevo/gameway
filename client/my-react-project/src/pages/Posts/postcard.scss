@@ -1,0 +1,21 @@
+
+
+  
+
+.card--list{
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.897);
+    margin: 0 auto;
+    margin-top: 2vh;
+    text-align: center;
+    list-style: none;
+    width: 20rem;
+    border-radius: 1rem;
+        li {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        color: rgb(243, 238, 238);
+    }
+}
+

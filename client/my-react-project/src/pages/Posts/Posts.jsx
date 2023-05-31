@@ -12,6 +12,15 @@ function Posts(){
     const [gameTitle, setGameTitle] = useState("");
 
     return (
+<<<<<<< Updated upstream
         <div>Start here</div>
+=======
+        <div>
+            <Navbar />
+           
+            {posts}
+            
+        </div>
+>>>>>>> Stashed changes
     );
 }

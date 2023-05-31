@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "./AccountPage.scss";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import { FaUserAstronaut } from 'react-icons/fa';
-import { useParams, Link } from "react-router-dom";
-function Account() {
-  const userName="Tom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setUsername } from "../../redux/actions";
+
+function Account({ username, setUsername }) {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("mypassword");
   const [displayAccountInfo, setDisplayAccountInfo] = useState(true);
@@ -23,21 +25,13 @@ function Account() {
     <div className="account">
       <Navbar />
       <div className="account-info-container">
-        
         <div className="account-info-left">
-          
           <div className="user-icon">
-            
             <div className="user-container">
-              <FaUserAstronaut
-                style={{ color: 'yellow' }}
-                size={180}
-              />
+              <FaUserAstronaut style={{ color: 'yellow' }} size={180} />
             </div>
-
           </div>
-
-          <p className="user-name">{userName}</p>
+          <p className="user-name">{username}</p>
           <div className="account-buttons-container">
             <button
               className={`account-button ${displayAccountInfo ? 'active' : ''}`}
@@ -54,9 +48,9 @@ function Account() {
           </div>
         </div>
 
-        <Link to={`/profileFollowers/?id=${userName}`} style={{ textDecoration: 'none' }}>
-        <button className="account-follow-button">Followers:</button>
-        <button className="account-follow-button">Following:</button>
+        <Link to={`/profileFollowers/?id=${username}`} style={{ textDecoration: 'none' }}>
+          <button className="account-follow-button">Followers:</button>
+          <button className="account-follow-button">Following:</button>
         </Link>
         <div className="divider"></div>
         <div className="account-info-right">
@@ -64,7 +58,7 @@ function Account() {
             <>
               <div className="account-info-row">
                 <p className="account-info-label">Username:</p>
-                <p className="account-info-value">tomthegreat101</p>
+                <p className="account-info-value">{username}</p>
               </div>
               <div className="account-info-row">
                 <p className="account-info-label">Email:</p>
@@ -73,15 +67,16 @@ function Account() {
             </>
           ) : (
             <div className="account-info-row">
-              <p className="account-info-label-password">Password:
-              <input
+              <p className="account-info-label-password">
+                Password:
+                <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   readOnly
                   className="account-info-password"
-                /></p>
+                />
+              </p>
               <div className="password-container">
-                
                 <button
                   className="password-toggle"
                   onClick={handleShowPassword}
@@ -98,4 +93,13 @@ function Account() {
   );
 }
 
-export default Account;
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.username,
+  };
+};
+const mapDispatchToProps = {
+  setUsername,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);

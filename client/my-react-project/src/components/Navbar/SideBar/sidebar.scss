@@ -80,15 +80,15 @@ $shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
 }
 
 .sidebar--list{ 
-  margin-top: 3rem;
   height:100%;
   color: $primary-color;
   list-style: none;
   font-size: larger;
+
 }
 
 .sidebar--contents{
-  padding: 25px 0px;
+  padding: 20px 0px;
   display: flex;
   margin-right: 1.5rem;
   justify-content: center;

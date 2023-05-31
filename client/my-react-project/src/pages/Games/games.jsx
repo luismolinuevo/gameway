@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar.jsx";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import PostCard from "../../pages/Posts/PostCard"
 function Games() {
   const { search } = useLocation();
   const params = new URLSearchParams(search);
