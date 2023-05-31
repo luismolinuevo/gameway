@@ -1,43 +1,46 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./postcard.scss"
+import './postcard.scss'
+import { Link } from "react-router-dom";
+
 export default function PostCard(props){
     const [userName, setUserName] = useState("");
 
     useEffect(() =>{
         async function getUsername(){
+            console.log(props);
             const token = localStorage.getItem("token");
-            const response = await axios.get('http://localhost:8080/auth/login',{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            const user = response.data.data.username;
+            const response = await axios.get('http://localhost:8080/auth/user/' + props.userId);
+            console.log(response);
+            const user = response.data.username;
             setUserName(user);
         }
         getUsername();
     }, []);
 
-    
-
     return(
         <div className="div postCard">
-            <ul className="card--list">
-                <li>
-                    {userName}
-                </li>
-                <li>
-                    {props.title}
-                </li>
-                <li>
-                    {props.game}
-                </li>
-                <li>
-                    {props.body}
-                </li>
-                
-            </ul>
+            <Link className="link"to={`/comments/` + props.id }>
+                <ul className="card--list">
+                    <div className="card--title">
+                        <li>
+                            {userName}
+                        </li>
+                        <li>
+                            {props.game}
+                        </li>
+                    </div>
+                    <div className="card--body">
+                        <li>
+                            Title: {props.title}
+                        </li>
+                        <li>
+                            {props.body}
+                        </li>
+                    </div>
+                </ul>
+            </Link>
         </div>
     )
 }

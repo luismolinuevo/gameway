@@ -3,44 +3,43 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.897);
-    
 }
 
 .form--title{
     display: flex;
+    text-align: center;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100px;
-    margin-bottom: 2.5rem;
-    margin-right: 50%;
-    padding-bottom: 1rem;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
 }
 
 .form--body{
+    text-align: center;
+    align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 50%;
-    // margin: 2.5rem;
-    // margin-left: 25%;
-    // padding-bottom: 1rem;
-    // max-width: 50%;
-    // height: 25rem;
-    
 }
 
 .body--title{
+    justify-self: center;
     color:yellow;
     font-size: 50px;
-    // margin:0;
 }
 
 .body--form{
     border-color:bisque;
     border-style: solid;
+    border-radius: 15px;
+    text-align: center;
     height: 75%;
-    width: 100%;
+    width: 50%;
     font-size: larger;
+    margin-bottom: 2vh;
 }
 
 .title{
@@ -50,6 +49,8 @@
 
 .title--input{
     font-size: larger;
+    width: 50%;
+    border-radius: 15px;
 }
 
 .submit{

@@ -1,16 +1,26 @@
-.card--list{
-    padding: 0;
-    height: 25vh;
-    width: 65vh;
+.postComment--main{
+    border-radius: 5px;
+    border-style: solid;
+    border-color: brown;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: fit-content;
+}
+
+.postComment--list{
+    height: 50vh;
+    width: 100vh;
     background-color: black;
     border-radius: 5px;
     border-style: solid;
     border-color: yellow;
-    margin: 3vh;
+    //margin: 3vh;
     align-items: center;
+    font-size:x-large;
 }
 
-.card--title{
+.postComment--title{
     margin-top: 1vh;
     display: flex;
     justify-content: space-between;
@@ -18,12 +28,8 @@
     border-color: yellow;
 }
 
-.card--body{
+.postComment--body{
     margin-top: 1vh;
-}
-
-.link{
-    text-decoration: none;
 }
 
 li {

@@ -1,11 +1,9 @@
 import React from "react";
 import {useState} from "react";
 import axios from "axios";
-import "./createpost.scss";
 import { useLocation } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
 
-export default function CreatePost(){
+export default function CreateComment(){
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const { search } = useLocation();
@@ -40,7 +38,6 @@ export default function CreatePost(){
 
   return(
     <div className="div createPost">
-        <Navbar/>
         <form className="form-container" >
             
             <div className="form--title">
