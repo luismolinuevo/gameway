@@ -1,11 +1,12 @@
 .postComment--main{
     border-radius: 5px;
     border-style: solid;
-    border-color: brown;
+    border-color: rgba(165, 42, 42, 0);
     display: flex;
     justify-content: center;
     width: auto;
     height: fit-content;
+   
 }
 
 .postComment--list{
@@ -17,7 +18,8 @@
     border-color: yellow;
     //margin: 3vh;
     align-items: center;
-    font-size:x-large;
+    font-size:x-large; 
+    box-shadow: 0px 5px 25px 1px #000000e1;
 }
 
 .postComment--title{

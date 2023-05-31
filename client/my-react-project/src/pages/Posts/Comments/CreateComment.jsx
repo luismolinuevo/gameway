@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-
+import '../Comments/createcomment.scss';
 export default function CreateComment(){
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -37,18 +37,14 @@ export default function CreateComment(){
   }
 
   return(
-    <div className="div createPost">
+    <div className="comment-Post">
         <form className="form-container" >
             
-            <div className="form--title">
-                <label htmlFor="title" className="title">Post Title</label>
-                <input type="text" className="title--input" onChange={e => setTitle(e.target.value)}></input>
-            </div>
             
             <div className="form--body">
-                <label htmlFor="title" className="body--title">Post Body</label>
+              
                 <br/>
-                <textarea className="body--form" onChange={e => setBody(e.target.value)}></textarea>
+                <textarea className="body--form" onChange={e => setBody(e.target.value)}placeholder="Leave a comment here..."></textarea>
             </div>
             
             <div className="submit">

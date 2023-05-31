@@ -5,17 +5,24 @@ import { Link } from "react-router-dom";
 import SearchBar from './SearchBar/SearchBar';
 import "./navbar.scss";
 import SideBar from "./SideBar/Sidebar";
-
+import { useSelector, useDispatch } from "react-redux";
+import { checkLoginStatus } from "../../redux/auth";
 function Navbar() {
   const [searchInput, setSearchInput] = useState("");
   const [gameList, setGameList] = useState([]);
-
+  const dispatch = useDispatch();
   const handleSearch = (query) => {
     console.log(`Searching for ${query}...`);
     // perform search logic here
   };
- 
 
+
+  const username = useSelector((state) => state.auth.username);
+  
+  useEffect(() => {
+    dispatch(checkLoginStatus())
+
+  }, [])
   const linkStyle = {
     margin: "1rem",
     textDecoration: "none",
@@ -34,6 +41,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <SideBar className="user" />
+      <p className="nav-username">{username}</p>
       <SearchBar onSearch={handleSearch} />
     </nav>
   );
