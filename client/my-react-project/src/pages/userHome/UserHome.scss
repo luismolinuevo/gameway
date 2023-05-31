@@ -190,7 +190,7 @@ body::before {
       background-color: #181818;
       box-shadow: 0px 5px 10px rgba(111, 158, 0, 0.247);
       color: #b7d605;
-      font-weight: 1000;
+      
       transform: translateY(-5px);
     }
     }
@@ -217,6 +217,7 @@ body::before {
     }
    .game-tags{
     display:flex;
+   
     p{
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1f1e1e;

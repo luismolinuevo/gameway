@@ -84,6 +84,9 @@ function UserHome() {
     else if (gameName === "Fortnite"){
       return ["RPG", "Shooter", "Battle Royale"]
     }
+    else if (gameName === "Overwatch 2"){
+      return ["RPG", "Shooter"]
+    }
     else {
       return [];
     }

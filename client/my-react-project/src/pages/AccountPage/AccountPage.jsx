@@ -9,10 +9,10 @@ import { checkLoginStatus } from "../../redux/auth";
 function Account() {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState("mypassword");
+  
   const [displayAccountInfo, setDisplayAccountInfo] = useState(true);
   const username = useSelector((state) => state.auth.username);
-  
+  const password = useSelector((state) => state.auth.password);
 
   useEffect(() => {
     dispatch(checkLoginStatus())
@@ -20,7 +20,7 @@ function Account() {
   }, [])
 
   console.log(username)
-
+  console.log(password)
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
     setDisplayAccountInfo(false);
