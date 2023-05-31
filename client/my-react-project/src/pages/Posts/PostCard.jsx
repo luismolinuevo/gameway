@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./postcard.scss"
+import { FaUserAstronaut } from "react-icons/fa";
+
 export default function PostCard(props){
     const [userName, setUserName] = useState("");
 
@@ -22,22 +24,34 @@ export default function PostCard(props){
     
 
     return(
-        <div className="div postCard">
-            <ul className="card--list">
-                <li>
-                    {userName}
-                </li>
-                <li>
-                    {props.title}
-                </li>
-                <li>
-                    {props.game}
-                </li>
-                <li>
-                    {props.body}
-                </li>
+        <div className="postCard">
+            
+            <div className="card">
                 
-            </ul>
+                <div className="user-icon">
+                <FaUserAstronaut
+                style={{ color: "yellow" }} size={80} 
+                />
+                <p>
+                {userName}
+                 </p>   
+                </div>
+
+                <div>
+                    <ul className="post-list">
+                    
+                    <li className="post-title">
+                        {props.title}
+                    </li>
+                    <li  className="post-game">
+                        {props.game}
+                    </li>
+                    <li  className="post-description">
+                        {props.body}
+                    </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }

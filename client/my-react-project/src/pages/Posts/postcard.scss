@@ -1,16 +1,58 @@
-.card--list{
+
+
+.card{
     display:flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.897);
     margin: 0 auto;
     margin-top: 2vh;
-    text-align: center;
+    padding: 5rem 15rem 5rem 5rem;
     list-style: none;
     width: 20rem;
     border-radius: 1rem;
+    align-items: center;
+    .post-list{
+        color: rgb(243, 238, 238); 
+        list-style: none;
+        margin-left: 15rem;
+        margin-top: -10rem;      
         li {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        color: rgb(243, 238, 238);
+        background-color: grey;
+        width: 20rem;
+        height: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+       
+      
+        }
+        .post-title{
+            font-size: 3rem;
+            width: 25rem;
+            margin-bottom: 4rem;
+            margin-left: 2rem;
+        }
+        .post-game{
+            background: none;
+            margin-left: 2vh;
+            margin-top: -7vh;
+            overflow-y: hidden;
+        }
+        .post-description{
+            margin-left: 3vh;
+            padding: 5vh; 
+        }
+}
+    .user-icon{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        margin-right: 18rem;
+                    
+        border-radius: 50%;
+        background-color: rgb(27, 27, 27);
+        height: 5rem;
+        width: 5rem;
+        color:yellow;
     }
 }

@@ -93,7 +93,7 @@ function Games() {
     
     <div className="right-container">
       <Link to={`/createPost?name=${gameName}`}>
-          <button>Create Post</button>
+          <button>Create Post+</button>
       </Link>
       <Link to={`/viewPost?name=${gameName}`}>
         <button>View Post</button>
