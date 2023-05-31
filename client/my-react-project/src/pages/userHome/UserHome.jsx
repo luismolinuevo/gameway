@@ -59,6 +59,34 @@ function UserHome() {
     color: "black",
     fontSize: "2vh"
   };
+
+  const getGameTags = (gameName) => {
+    if (gameName === "Grand Theft Auto V") {
+      return ["FPS", "Shooter"];
+     
+    }  else if (gameName === "Counter-Strike: Global Offensive"){
+      return ["FPS", "Shooter"]
+    }
+    else if (gameName === "League of Legends"){
+      return ["RPG", "Strategy", "MOBA"]
+    }
+    else if (gameName === "VALORANT"){
+      return ["FPS", "Shooter"]
+    }
+    else if (gameName === "Apex Legends"){
+      return ["FPS", "Shooter", "Battle Royale"]
+    }
+    else if (gameName === "Fortnite"){
+      return ["RPG", "Shooter", "Battle Royale"]
+    }
+    else if (gameName === "Overwatch 2"){
+      return ["RPG", "Shooter"]
+    }
+    else {
+      return [];
+    }
+  };
+
   return (
     <div className="user">
       <Navbar />
@@ -73,10 +101,18 @@ function UserHome() {
         <div className="games">
           {games.map((game) => (
              <Link key={game.id} to={`/games?name=${game.name}`}style={linkStyle}>
-            <div key={game.id}>
-            <img src={`${game.box_art_url.replace("{width}", "300").replace("{height}", "400")}?${Math.random()}`} alt={game.name} />
-            <p className="game-name">{game.name}</p>
-            </div>
+            <div className="specific-game" key={game.id}>
+                  <img
+                    src={`${game.box_art_url.replace("{width}", "300").replace("{height}", "400")}?${Math.random()}`}
+                    alt={game.name}
+                  />
+                  <p className="game-name">{game.name}</p>
+                  <div className="game-tags">
+                    {getGameTags(game.name).map((tag) => (
+                      <p key={tag}>{tag}</p>
+                    ))}
+                  </div>
+                </div>
             </Link>
           ))}
         </div>

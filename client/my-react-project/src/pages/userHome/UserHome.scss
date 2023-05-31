@@ -176,11 +176,23 @@ body::before {
     
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14vh;
+    gap: 10vh;
     margin-top: 50px; 
     
     
-    
+    .specific-game{
+      background-color: #2b2a2a;
+      padding: 2rem;
+      border-radius: 2rem;
+      transition: all 0.3s ease 0s;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.562);
+      &:hover {
+    background-color: #181818;
+    box-shadow: 0px 5px 10px rgba(111, 158, 0, 0.247);
+    color: #b7d605;
+    transform: translateY(-5px);
+  }
+  }
     img {
       box-shadow: 0px 5px 20px 1px #111111;
       width: 100%;
@@ -210,7 +222,19 @@ body::before {
       font-size: 1.5rem;
       
     }
-   
+    .game-tags{
+      display:flex;
+     
+      p{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1f1e1e;
+        color:  yellow;
+        margin-left: .7rem;
+        padding: .8rem;
+        border-radius: 2rem;
+        font-size: 1rem;
+      }
+     }
     @keyframes neon {
       from {
         text-shadow:

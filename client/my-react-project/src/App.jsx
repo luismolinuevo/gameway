@@ -3,16 +3,16 @@ import Register from "./pages/Register/Register";
 import Homepage from "./pages/Homepage/Homepage";
 
 import './App.scss'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import UserHome from './pages/UserHome/UserHome'
-import Account from './pages/AccountPage/AccountPage'
-import Games from './pages/Games/games'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UserHome from './pages/UserHome/UserHome';
+import Account from './pages/AccountPage/AccountPage';
+import Games from './pages/Games/games';
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import ProfileFollowers from "./pages/ProfileFollowers/ProfileFollowers";
 import SpecficChat from "./pages/Chat/SpecificChat/SpecficChat";
 import CreatePost from "./pages/Posts/CreatePost";
 import Posts from "./pages/Posts/Posts";
-import ChatPage from "./pages/Chat/ChatPage"
+import ChatPage from "./pages/Chat/ChatPage";
 function App() {
   return (
     <Router>
