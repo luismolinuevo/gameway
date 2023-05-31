@@ -22,9 +22,6 @@ const HomePage = () => {
             <Link to="/register" >
               <button>Register</button>
             </Link>
-            <Link to ="/userHome">
-              <button>test</button>
-            </Link>
             </div>
           </div>
         </div>
